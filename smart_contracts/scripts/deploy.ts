@@ -3,10 +3,17 @@ import { ethers } from "hardhat";
 
 
 async function main() {
+    const [deployer] = await ethers.getSigners();
+    console.log(
+        "Deploying contracts with the account:",
+        await deployer.getAddress()
+    );
+
+    const baseURI = ""
 
     const ContractFactory = await ethers.getContractFactory("Personality");
     console.log("Deploying contract...");
-    const contract = await ContractFactory.deploy();
+    const contract = await ContractFactory.deploy(baseURI);
     await contract.waitForDeployment();
 
     const Account = await ethers.deployContract("ERC6551Account");
@@ -15,7 +22,7 @@ async function main() {
     const Registry = await ethers.deployContract("ERC6551Registry");
     const registry = await Registry.waitForDeployment();
 
-    console.log("Pinnie contract deployed at:", await contract.getAddress());
+    console.log("PFAI contract deployed at:", await contract.getAddress());
     console.log("Account contract deployed at:", await account.getAddress());
     console.log("Registry contract deployed at:", await registry.getAddress());
 }

@@ -10,10 +10,8 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
     string private _baseTokenURI;
 
     constructor(
-        string memory name,
-        string memory symbol,
         string memory baseURI
-    ) ERC721(name, symbol) Ownable(msg.sender) {
+    ) ERC721("Personality Finance AI", "PFAI") Ownable(msg.sender) {
         _baseTokenURI = baseURI;
     }
 
