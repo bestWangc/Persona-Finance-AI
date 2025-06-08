@@ -1,6 +1,6 @@
 # Persona Finance AI (PFAI)
 ## The First DeFi Protocol Merging Personified Trading Strategies with **On-Chain Behavioral Evolution**
-By creating self-evolving on-chain trading personas, PFAI addresses three fundamental challenges:
+By creating self-evolving on-chain trading personas(ERC-6551 NFT), PFAI addresses three fundamental challenges:
 
 1. **Strategy Rigidity** –  Conventional AI trading models lack dynamic market adaptability
 2. **User Accessibility Barrier** – Complex DeFi strategies exceed mainstream users' technical capacity
@@ -22,4 +22,4 @@ PFAI achieves breakthrough innovation through three core modular architectures:
 - **Genetic Trait Trading**: Buy/sell high-performance strategy components
 - **Influence Tokenization**: Governance rights + revenue sharing
 
-![alt text](readme-img/image.png)
+![alt text](image-1.png)
