@@ -23,7 +23,7 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
     ) public onlyOwner returns (uint256) {
         uint256 tokenId = _nextTokenId++;
         _safeMint(to, tokenId);
-        _setTokenURI(newTokenId, uri);
+        _setTokenURI(tokenId, uri);
         return tokenId;
     }
 

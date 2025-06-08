@@ -6,8 +6,8 @@ import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/interfaces/IERC1271.sol";
 import "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
-import "../interfaces/IERC6551Account.sol";
-import "../interfaces/IERC6551Executable.sol";
+import "./interfaces/IERC6551Account.sol";
+import "./interfaces/IERC6551Executable.sol";
 
 contract ERC6551Account is
     IERC165,
@@ -15,6 +15,7 @@ contract ERC6551Account is
     IERC6551Account,
     IERC6551Executable
 {
+    uint256 immutable deploymentChainId = block.chainid;
     uint256 public state;
     bytes32 public accountName;
 
@@ -24,13 +25,12 @@ contract ERC6551Account is
         address to,
         uint256 value,
         bytes calldata data,
-        uint256 operation
-    ) external payable returns (bytes memory result) {
+        uint8 operation
+    ) external payable virtual returns (bytes memory result) {
         require(_isValidSigner(msg.sender), "Invalid signer");
         require(operation == 0, "Only call operations are supported");
 
         ++state;
-
         bool success;
         (success, result) = to.call{value: value}(data);
 
@@ -103,7 +103,7 @@ contract ERC6551Account is
         accountName = newName_;
     }
 
-    function getAccountName() view public returns (bytes32) {
+    function getAccountName() public view returns (bytes32) {
         return accountName;
     }
 }
