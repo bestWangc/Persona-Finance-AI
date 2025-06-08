@@ -12,9 +12,9 @@ async function main() {
     console.log("ethers version:", ethers.version);
     //mint ERC-721 NFT
     // Get the contract instance
-    const contractAddress = process.env.PST_ADDRESS || "";
+    const contractAddress = process.env.PFAI_ADDRESS || "";
     if (!contractAddress) {
-        console.error("PST_ADDRESS not set");
+        console.error("PFAI_ADDRESS not set");
         process.exit(1);
     }
     const personal = new ethers.Contract(contractAddress, PFABI.abi, deployer);
