@@ -21,3 +21,5 @@ PFAI achieves breakthrough innovation through three core modular architectures:
 - **Persona Leasing**: Monetize idle strategy NFTs
 - **Genetic Trait Trading**: Buy/sell high-performance strategy components
 - **Influence Tokenization**: Governance rights + revenue sharing
+
+![alt text](readme-img/image.png)
