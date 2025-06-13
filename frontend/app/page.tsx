@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar';
 import Link from 'next/link';
+import TypeWriterText from './components/TypeWriterText';
 
 export default function Home() {
   return (
@@ -8,7 +9,9 @@ export default function Home() {
 
       <main className="container mx-auto px-4 py-12">
         <section className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-6">Welcome to Persona Finance AI</h1>
+          <h1 className="text-4xl font-bold mb-6 text-yellow-400">
+            <TypeWriterText />
+          </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Create your personalized NFT trading persona powered by AI.
             Let artificial intelligence optimize your trading strategies and maximize your returns.
