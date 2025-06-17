@@ -10,8 +10,8 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
     string private _baseTokenURI;
 
     struct PersonalInfo {
-        string riskPreference; 
-        string tradingStyle; 
+        string riskPreference;
+        string tradingStyle;
         uint256 initialCapital;
         uint256 score;
         address owner;
@@ -20,7 +20,12 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
     }
     mapping(uint256 => PersonalInfo) public personalities;
 
-    event NFTCreated(uint256 indexed tokenId, address owner, string riskPreference, string tradingStyle);
+    event NFTCreated(
+        uint256 indexed tokenId,
+        address owner,
+        string riskPreference,
+        string tradingStyle
+    );
     event NFTForRent(uint256 indexed tokenId, uint256 rentPricePerHour);
 
     constructor(
@@ -65,11 +70,15 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
         return super.supportsInterface(interfaceId);
     }
 
-    function createNFT(address owner, string memory _riskPreference, string memory _tradingStyle, uint256 _initialCapital) external returns (uint256) {
-        _tokenIds.increment();
-        uint256 newTokenId = _tokenIds.current();
-        _mint(owner, newTokenId);
-        personalities[newTokenId] = Personality({
+    function createNFT(
+        address owner,
+        string memory _riskPreference,
+        string memory _tradingStyle,
+        uint256 _initialCapital
+    ) external returns (uint256) {
+        uint256 newTokenId = _nextTokenId++;
+        _safeMint(owner, newTokenId);
+        personalities[newTokenId] = PersonalInfo({
             riskPreference: _riskPreference,
             tradingStyle: _tradingStyle,
             initialCapital: _initialCapital,
@@ -83,7 +92,11 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
         return newTokenId;
     }
 
-    function setRent(uint256 tokenId, bool _isForRent, uint256 _rentPricePerHour) external {
+    function setRent(
+        uint256 tokenId,
+        bool _isForRent,
+        uint256 _rentPricePerHour
+    ) external {
         require(ownerOf(tokenId) == msg.sender, "Only owner can set rent");
         personalities[tokenId].isForRent = _isForRent;
         personalities[tokenId].rentPricePerHour = _rentPricePerHour;
