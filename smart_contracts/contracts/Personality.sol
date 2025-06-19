@@ -95,8 +95,7 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
 
         string memory output = string(abi.encodePacked(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7], parts[8],parts[9], parts[10]));
         // output = string(abi.encodePacked(output, parts[9], parts[10]));
-        
-        string memory json = Base64.encode(bytes(string(abi.encodePacked('{"name": "Bag #', tokenId.toString(), '", "description": "Loot is randomized adventurer gear generated and stored on chain. Stats, images, and other functionality are intentionally omitted for others to interpret. Feel free to use Loot in any way you want.", "image": "data:image/svg+xml;base64,', Base64.encode(bytes(output)), '"}'))));
+        string memory json = Base64.encode(bytes(string(abi.encodePacked('{"name": "No #', tokenId.toString(), '", "description": "PFAI is an autonomously evolving AI persona based on on-chain behavior,Use it for anything, such as trading, arbitrage, market making, staking, cross chain, etc.", "image": "data:image/svg+xml;base64,', Base64.encode(bytes(output)), '"}'))));
         output = string(abi.encodePacked('data:application/json;base64,', json));
 
         return output;
