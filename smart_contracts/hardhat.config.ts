@@ -8,7 +8,14 @@ const config: HardhatUserConfig = {
   networks: {
     localhost: {
       url: "http://localhost:8545"
-    }
+    },
+    bscTestnet: {
+      url: process.env.BNBTest_URL || "",
+      accounts: process.env.BNBTest_PRIVATE_KEY !== undefined ? [process.env.BNBTest_PRIVATE_KEY] : [],
+    },
+  },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_V2_API_KEY || ""
   }
 };
 
