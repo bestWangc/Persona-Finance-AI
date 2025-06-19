@@ -8,8 +8,9 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
 
 contract Personality is ERC721, ERC721URIStorage, Ownable {
+    using Strings for uint256;
+
     uint256 private _nextTokenId;
-    string private _baseTokenURI;
 
     struct PersonalInfo {
         string riskPreference;
@@ -20,8 +21,18 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
         address owner;
         bool isForRent;
         uint256 rentPricePerHour;
+        string levelColor;
     }
     mapping(uint256 => PersonalInfo) public personalities;
+
+    string[6] private levelColors = [
+        "B4B4B4",
+        "E0E4E8",
+        "A39FC1",
+        "7EC1F5",
+        "F58A7E",
+        "D4AF37"
+    ];
 
     event PersonalityCreated(
         uint256 indexed tokenId,
@@ -33,11 +44,10 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
     );
     event PersonalityForRent(uint256 indexed tokenId, uint256 rentPricePerHour);
 
-    constructor(
-        string memory baseURI
-    ) ERC721("Personality Finance AI", "PFAI") Ownable(msg.sender) {
-        _baseTokenURI = baseURI;
-    }
+    constructor()
+        ERC721("Personality Finance AI", "PFAI")
+        Ownable(msg.sender)
+    {}
 
     function safeMint(
         address to,
@@ -54,49 +64,84 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
         return _nextTokenId;
     }
 
-    function _baseURI() internal view override returns (string memory) {
-        return _baseTokenURI;
+    function getColor(uint256 tokenId) public view returns (string memory) {
+        string memory levelColor = personalities[tokenId].levelColor;
+        if (bytes(levelColor).length == 0) {
+            levelColor = "fff";
+        }
+        return levelColor;
     }
 
-    function setBaseURI(string memory baseURI) public onlyOwner {
-        _baseTokenURI = baseURI;
-    }
-
-    // The following functions are overrides required by Solidity.
     function tokenURI(
         uint256 tokenId
     ) public view override(ERC721, ERC721URIStorage) returns (string memory) {
-        return super.tokenURI(tokenId);
-    }
+        require(tokenId < _nextTokenId, "Token ID does not exist");
 
-    function tokenURI(uint256 tokenId) public pure returns (string memory) {
-        string[11] memory parts;
-        parts[0] = '<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0c0c2a" /><stop offset="100%" stop-color="#1a1a3a" /></linearGradient></defs><rect width="100%" height="100%" fill="url(#bg)" /><path d="M 0 100 L 700 100 M 100 0 L 100 500" stroke="#00f0ff20" stroke-width="2" /><path d="M 0 300 L 500 300 M 300 0 L 300 700" stroke="#ff2a6d20" stroke-width="2" /><text x="10%" y="10%" font-size="42" fill="#fff">';
+        string[13] memory parts;
+        parts[
+            0
+        ] = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500"><defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0c0c2a" /><stop offset="100%" stop-color="#1a1a3a" /></linearGradient></defs><style>.base { fill: #';
 
-        parts[1] = personalities[tokenId].riskPreference;
+        parts[1] = getColor(tokenId);
 
-        parts[2] = '</text><text x="10%" y="20%" font-size="42" fill="#fff">';
+        parts[
+            2
+        ] = ';font-size: 25px; }</style><rect width="100%" height="100%" fill="url(#bg)" /><path d="M 0 100 L 450 100 M 100 0 L 100 350" stroke="#00f0ff20" stroke-width="2" /><path d="M 0 300 L 350 300 M 300 0 L 300 450" stroke="#ff2a6d20" stroke-width="2" /><text x="10%" y="10%" class="base">';
 
-        parts[3] = personalities[tokenId].tradingStyle;
+        parts[3] = personalities[tokenId].riskPreference;
 
-        parts[4] = '</text><text x="10%" y="30%" font-size="42" fill="#fff">';
+        parts[4] = '</text><text x="10%" y="20%" class="base">';
 
-        parts[5] = personalities[tokenId].tradingFrequency;
+        parts[5] = personalities[tokenId].tradingStyle;
 
-        parts[6] = '</text><text x="10%" y="40%" font-size="42" fill="#fff">';
+        parts[6] = '</text><text x="10%" y="30%" class="base">';
 
-        parts[7] = personalities[tokenId].initialCapital;
+        parts[7] = personalities[tokenId].tradingFrequency;
 
-        parts[8] = '</text><text x="10%" y="50%" font-size="42" fill="#fff">';
+        parts[8] = '</text><text x="10%" y="40%" class="base">';
 
-        parts[9] = personalities[tokenId].score;
+        parts[9] = personalities[tokenId].initialCapital.toString();
 
-        parts[10] = '</text><circle cx="75%" cy="60%" r="2" fill="#ff2a6d"><animate attributeName="cy" values="10%;85%;10%" dur="6s" repeatCount="indefinite" /></circle><circle cx="55%" cy="80%" r="2" fill="#00f0ff"><animate attributeName="cx" values="10%;85%;10%" dur="5s" repeatCount="indefinite" /></circle></svg>';
+        parts[10] = '</text><text x="10%" y="50%" class="base">';
 
-        string memory output = string(abi.encodePacked(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7], parts[8],parts[9], parts[10]));
-        // output = string(abi.encodePacked(output, parts[9], parts[10]));
-        string memory json = Base64.encode(bytes(string(abi.encodePacked('{"name": "No #', tokenId.toString(), '", "description": "PFAI is an autonomously evolving AI persona based on on-chain behavior,Use it for anything, such as trading, arbitrage, market making, staking, cross chain, etc.", "image": "data:image/svg+xml;base64,', Base64.encode(bytes(output)), '"}'))));
-        output = string(abi.encodePacked('data:application/json;base64,', json));
+        parts[11] = personalities[tokenId].score.toString();
+
+        parts[
+            12
+        ] = '</text><circle cx="75%" cy="60%" r="2" fill="#ff2a6d"><animate attributeName="cy" values="10%;85%;10%" dur="6s" repeatCount="indefinite" /></circle><circle cx="55%" cy="80%" r="2" fill="#00f0ff"><animate attributeName="cx" values="10%;85%;10%" dur="5s" repeatCount="indefinite" /></circle></svg>';
+
+        string memory output = string(
+            abi.encodePacked(
+                parts[0],
+                parts[1],
+                parts[2],
+                parts[3],
+                parts[4],
+                parts[5],
+                parts[6],
+                parts[7],
+                parts[8]
+            )
+        );
+        output = string(
+            abi.encodePacked(output, parts[9], parts[10], parts[11], parts[12])
+        );
+        string memory json = Base64.encode(
+            bytes(
+                string(
+                    abi.encodePacked(
+                        '{"name": "No #',
+                        tokenId.toString(),
+                        '", "description": "PFAI is an autonomously evolving AI persona based on on-chain behavior,Use it for anything, such as trading, arbitrage, market making, staking, cross chain, etc.", "image": "data:image/svg+xml;base64,',
+                        Base64.encode(bytes(output)),
+                        '"}'
+                    )
+                )
+            )
+        );
+        output = string(
+            abi.encodePacked("data:application/json;base64,", json)
+        );
 
         return output;
     }
@@ -124,7 +169,8 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
             score: 100,
             owner: owner,
             isForRent: false,
-            rentPricePerHour: 0
+            rentPricePerHour: 0,
+            levelColor: ""
         });
 
         emit PersonalityCreated(
