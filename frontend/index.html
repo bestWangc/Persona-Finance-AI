@@ -178,7 +178,7 @@
             color: white;
             font-weight: 600;
             font-size: 1.1rem;
-            cursor: pointer;
+            cursor: button;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -198,7 +198,7 @@
             color: var(--neon-blue);
             font-weight: 600;
             font-size: 1.1rem;
-            cursor: pointer;
+            cursor: button;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -572,6 +572,223 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
+        /* Roadmap Section */
+        .roadmap {
+            padding: 5rem 5%;
+            background: rgba(0, 15, 34, 0.6);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 4rem auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom,
+                    var(--neon-purple),
+                    var(--neon-blue),
+                    var(--neon-green));
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            margin-bottom: 4rem;
+        }
+
+        .timeline-item.left {
+            left: 0;
+            padding-right: 3rem;
+            text-align: right;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+            padding-left: 3rem;
+        }
+
+        .timeline-date {
+            background: rgba(0, 199, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            border-radius: 30px;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .timeline-content {
+            background: rgba(0, 30, 60, 0.6);
+            border: 1px solid rgba(0, 199, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(0);
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 199, 255, 0.2);
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+        }
+
+        .timeline-item.left .timeline-content::after {
+            right: -40px;
+        }
+
+        .timeline-item.right .timeline-content::after {
+            left: -40px;
+        }
+
+        .timeline-badge {
+            position: absolute;
+            top: 20px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .timeline-item.left .timeline-badge {
+            right: -60px;
+        }
+
+        .timeline-item.right .timeline-badge {
+            left: -60px;
+        }
+
+        .completed {
+            background: linear-gradient(135deg, var(--neon-green), #008a5e) !important;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 5rem 5%;
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: rgba(0, 30, 60, 0.6);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 199, 255, 0.2);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 199, 255, 0.2);
+        }
+
+        .member-image {
+            height: 100px;
+            background: linear-gradient(135deg, var(--deep-space), var(--space-dark));
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .member-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(transparent 60%, rgba(0, 15, 34, 0.9));
+        }
+
+        .member-icon {
+            font-size: 4rem;
+            color: var(--neon-blue);
+        }
+
+        .member-info {
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .member-role {
+            color: var(--neon-green);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .member-bio {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 199, 255, 0.1);
+            border-radius: 50%;
+            color: var(--neon-blue);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--neon-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
         /* Dev Section */
         .dev-section {
             padding: 4rem 5%;
@@ -713,6 +930,282 @@
             left: 0;
         }
 
+        /* 交易生态系统样式 */
+        .ecosystem {
+            padding: 4rem 5%;
+            background: rgba(0, 15, 34, 0.6);
+            border-top: 1px solid rgba(0, 199, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 199, 255, 0.2);
+        }
+
+        .ecosystem-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .ecosystem-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .ecosystem-card {
+            background: rgba(0, 30, 60, 0.6);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 199, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .ecosystem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 199, 255, 0.2);
+        }
+
+        .ecosystem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    var(--neon-purple),
+                    var(--neon-blue),
+                    var(--neon-green));
+        }
+
+        .ecosystem-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .ecosystem-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 199, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+        }
+
+        .ecosystem-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 2rem 0;
+        }
+
+        .ecosystem-stat {
+            background: rgba(0, 15, 34, 0.7);
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid rgba(0, 199, 255, 0.2);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--neon-green);
+            margin-bottom: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .ecosystem-chart {
+            height: 200px;
+            width: 100%;
+            background: rgba(0, 20, 40, 0.7);
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .dna-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .dna-tag {
+            background: rgba(0, 199, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+            color: var(--neon-blue);
+            border: 1px solid rgba(0, 199, 255, 0.3);
+        }
+
+        .ecosystem-rankings {
+            margin-top: 3rem;
+        }
+
+        .ranking-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 199, 255, 0.2);
+        }
+
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 20, 40, 0.5);
+            margin-bottom: 10px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .ranking-item:hover {
+            background: rgba(0, 199, 255, 0.1);
+        }
+
+        .rank {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-right: 15px;
+        }
+
+        .ranking-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+
+        .ranking-info {
+            flex: 1;
+        }
+
+        .ranking-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .ranking-dna {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-family: 'Courier New', monospace;
+        }
+
+        .ranking-perf {
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            color: var(--neon-green);
+        }
+
+        .ecosystem-map {
+            height: 400px;
+            width: 100%;
+            background: rgba(0, 20, 40, 0.7);
+            border-radius: 16px;
+            margin-top: 3rem;
+            border: 1px solid rgba(0, 199, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-node {
+            position: absolute;
+            background: rgba(0, 15, 34, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .map-node:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 199, 255, 0.7);
+        }
+
+        .core-node {
+            width: 100px;
+            height: 100px;
+            border-color: var(--neon-purple);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .child-node {
+            width: 70px;
+            height: 70px;
+            border-color: var(--neon-blue);
+        }
+
+        .leaf-node {
+            width: 40px;
+            height: 40px;
+            border-color: var(--neon-green);
+        }
+
+        .node-icon {
+            font-size: 1.5rem;
+        }
+
+        .node-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.8rem;
+            color: var(--neon-blue);
+        }
+
+        .ecosystem-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--neon-blue);
+            margin-top: 2rem;
+            font-weight: 600;
+            gap: 10px;
+            text-decoration: none;
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .hero {
@@ -727,6 +1220,32 @@
 
             .section-title {
                 font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-item.left,
+            .timeline-item.right {
+                left: 0;
+            }
+
+            .timeline-item.left .timeline-content::after,
+            .timeline-item.right .timeline-content::after {
+                left: 20px;
+            }
+
+            .timeline-item.left .timeline-badge,
+            .timeline-item.right .timeline-badge {
+                left: 0;
             }
         }
 
@@ -758,6 +1277,14 @@
 
             .metric {
                 min-width: auto;
+            }
+
+            .ecosystem-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ecosystem-map {
+                height: 300px;
             }
         }
     </style>
@@ -915,30 +1442,357 @@
         </div>
     </section>
 
-    <!-- Dev Section -->
-    <section class="dev-section">
-        <h2 class="section-title">构建你的交易人格体</h2>
-
-        <div class="code-editor">
-            <pre><code><span class="code-comment">// 智能合约调用示例</span>
-<span class="code-keyword">contract</span> PersonaMinter {
-    <span class="code-keyword">function</span> <span class="code-function">mintPersona</span>(
-        <span class="code-variable">bytes32</span> _dna, 
-        <span class="code-variable">uint</span> _riskProfile, 
-        <span class="code-variable">address</span> _wallet
-    ) <span class="code-keyword">public</span> <span class="code-keyword">returns</span> (<span class="code-variable">ERC6551</span> nft) {
-        <span class="code-keyword">require</span>(_validateDNA(_dna));
-        <span class="code-keyword">return</span> _mintEvolutionaryNFT(_dna, _riskProfile, _wallet);
-    }
-}</code></pre>
+    <!-- 生态系统模块 -->
+    <section class="ecosystem">
+        <div class="ecosystem-header">
+            <h2>实时交易策略生态系统</h2>
+            <p>探索PFAI网络中的交易人格与策略基因的进化生态系统</p>
         </div>
 
-        <div class="dev-links">
-            <a href="#"><i class="fas fa-file-alt"></i> 查看ERC-6551人格协议标准</a>
-            <a href="#"><i class="fas fa-api"></i> 接入行为进化API</a>
-            <a href="#"><i class="fas fa-code-branch"></i> 基因交易市场SDK</a>
+        <div class="ecosystem-grid">
+            <!-- 活跃策略卡 -->
+            <div class="ecosystem-card">
+                <div class="ecosystem-title">
+                    <div class="ecosystem-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>活跃策略分布</h3>
+                </div>
+                <p>平台当前运行的交易人格类型分布与实时活动状态</p>
+
+                <div class="ecosystem-stats">
+                    <div class="ecosystem-stat">
+                        <div class="stat-value">42,859</div>
+                        <div class="stat-label">交易人格</div>
+                    </div>
+                    <div class="ecosystem-stat">
+                        <div class="stat-value">18.2%</div>
+                        <div class="stat-label">月增长率</div>
+                    </div>
+                    <div class="ecosystem-stat">
+                        <div class="stat-value">3.2M</div>
+                        <div class="stat-label">进化事件</div>
+                    </div>
+                </div>
+
+                <div class="ecosystem-chart">
+                    <!-- 图表将由JavaScript渲染 -->
+                    <canvas id="strategyChart"></canvas>
+                </div>
+
+                <div class="dna-tags">
+                    <div class="dna-tag">ARB:0x34</div>
+                    <div class="dna-tag">TRD:0x89</div>
+                    <div class="dna-tag">MM:0xAB</div>
+                    <div class="dna-tag">LQ:0xF3</div>
+                    <div class="dna-tag">VOL:0x5D</div>
+                </div>
+            </div>
+
+            <!-- 基因市场卡 -->
+            <div class="ecosystem-card">
+                <div class="ecosystem-title">
+                    <div class="ecosystem-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>策略基因市场</h3>
+                </div>
+                <p>热门策略基因的交易量、价值和历史表现</p>
+
+                <div class="ecosystem-stats">
+                    <div class="ecosystem-stat">
+                        <div class="stat-value">$8.2M</div>
+                        <div class="stat-label">日交易量</div>
+                    </div>
+                    <div class="ecosystem-stat">
+                        <div class="stat-value">12,458</div>
+                        <div class="stat-label">基因序列</div>
+                    </div>
+                    <div class="ecosystem-stat">
+                        <div class="stat-value">ETH</div>
+                        <div class="stat-label">主要币种</div>
+                    </div>
+                </div>
+
+                <div class="ecosystem-rankings">
+                    <div class="ranking-header">
+                        <h4>热门交易基因</h4>
+                        <span>平均ROI</span>
+                    </div>
+
+                    <div class="ranking-item">
+                        <div class="rank">1</div>
+                        <div class="ranking-avatar">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">闪电套利基因</div>
+                            <div class="ranking-dna">0x8A-F3-4D</div>
+                        </div>
+                        <div class="ranking-perf">+38.5%</div>
+                    </div>
+
+                    <div class="ranking-item">
+                        <div class="rank">2</div>
+                        <div class="ranking-avatar">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">趋势跟踪策略</div>
+                            <div class="ranking-dna">0x9B-C2-5E</div>
+                        </div>
+                        <div class="ranking-perf">+32.1%</div>
+                    </div>
+
+                    <div class="ranking-item">
+                        <div class="rank">3</div>
+                        <div class="ranking-avatar">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">多池流动性</div>
+                            <div class="ranking-dna">0x5D-A8-F1</div>
+                        </div>
+                        <div class="ranking-perf">+27.8%</div>
+                    </div>
+                </div>
+
+                <a href="#" class="ecosystem-link">
+                    探索完整基因市场 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- 进化生态系统卡 -->
+            <div class="ecosystem-card">
+                <div class="ecosystem-title">
+                    <div class="ecosystem-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>策略进化图谱</h3>
+                </div>
+                <p>交易策略的演变路径与新兴策略集群的生态关系</p>
+
+                <div class="ecosystem-stats">
+                    <div class="ecosystem-stat">
+                        <div class="stat-value">142</div>
+                        <div class="stat-label">策略集群</div>
+                    </div>
+                    <div class="ecosystem-stat">
+                        <div class="stat-value">29</div>
+                        <div class="stat-label">新突变簇</div>
+                    </div>
+                    <div class="ecosystem-stat">
+                        <div class="stat-value">0.48%</div>
+                        <div class="stat-label">日突变率</div>
+                    </div>
+                </div>
+
+                <div class="ecosystem-map">
+                    <!-- 交互式地图节点将在此渲染 -->
+                    <div class="map-node core-node">
+                        <div class="node-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="node-label">核心策略</div>
+                    </div>
+
+                    <div class="map-node child-node" style="top: 30%; left: 20%;">
+                        <div class="node-icon">
+                            <i class="fas fa-arbitration"></i>
+                        </div>
+                        <div class="node-label">套利衍生</div>
+                    </div>
+
+                    <div class="map-node child-node" style="top: 30%; left: 80%;">
+                        <div class="node-icon">
+                            <i class="fas fa-trend-up"></i>
+                        </div>
+                        <div class="node-label">趋势跟踪</div>
+                    </div>
+
+                    <div class="map-node child-node" style="top: 70%; left: 20%;">
+                        <div class="node-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div class="node-label">波动捕捉</div>
+                    </div>
+
+                    <div class="map-node child-node" style="top: 70%; left: 80%;">
+                        <div class="node-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <div class="node-label">跨链策略</div>
+                    </div>
+
+                    <div class="map-node leaf-node" style="top: 15%; left: 15%;">
+                        <div class="node-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="node-label">0x8A</div>
+                    </div>
+
+                    <div class="map-node leaf-node" style="top: 15%; left: 25%;">
+                        <div class="node-icon">
+                            <i class="fas fa-exchange"></i>
+                        </div>
+                        <div class="node-label">0xF3</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Roadmap Section -->
+    <section class="roadmap">
+        <h2 class="section-title">Roadmap</h2>
+
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-date">Part 1</div>
+                <div class="timeline-badge completed">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>概念验证完成</h3>
+                    <p>完成核心协议的智能合约架构设计和链上行为数据分析模型构建，成功验证交易人格铸造与初始进化可行性。</p>
+                    <ul>
+                        <li>ERC-6551 基础协议实现</li>
+                        <li>交易基因突变算法验证</li>
+                        <li>白皮书V1发布</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-date">Part 2</div>
+                <div class="timeline-badge completed">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>测试网启动</h3>
+                    <p>在以太坊Goerli测试网和Polygon Mumbai测试网部署PFAI协议，开放早期社区用户测试。</p>
+                    <ul>
+                        <li>人格铸造器V1发布</li>
+                        <li>10,000+个初始人格NFT铸造</li>
+                        <li>完成第一轮融资</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-date">Part 3</div>
+                <div class="timeline-badge">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>主网V1上线</h3>
+                    <p>PFAI主网在以太坊、Polygon主网上线，全面开放交易人格铸造、基因突变与基础租赁功能。</p>
+                    <ul>
+                        <li>交易人格进化引擎上线</li>
+                        <li>基因交易市场Alpha版</li>
+                        <li>API开放使用</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-date">Part 4</div>
+                <div class="timeline-badge">
+                    <i class="fas fa-dna"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>社交金融生态扩展</h3>
+                    <p>实现跨链策略基因表达，推出治理代币PFAI，构建完整的去中心化交易人格生态系统。</p>
+                    <ul>
+                        <li>人格繁殖池上线</li>
+                        <li>策略基因跨链协议实现</li>
+                        <li>DAO治理系统启动</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <h2 class="section-title">我们的基因工程团队</h2>
+
+        <div class="team-container">
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <div class="member-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Alex R. Vance</h3>
+                        <div class="member-role">首席协议架构师</div>
+                        <p class="member-bio">前Chainlink Labs首席研究员，去中心化机器学习专家。在MIT Media Lab期间主攻基于区块链的AI系统。</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <div class="member-icon">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Jamie K. Sato</h3>
+                        <div class="member-role">进化算法负责人</div>
+                        <p class="member-bio">前OpenAI研究员，专注于强化学习在金融交易中的应用。拥有斯坦福计算金融博士学位。</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <div class="member-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Morgan Lee</h3>
+                        <div class="member-role">智能合约负责人</div>
+                        <p class="member-bio">前Compound核心开发者，ERC-6551标准共同作者。参与开发多个DeFi核心协议。</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <div class="member-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Taylor Reed</h3>
+                        <div class="member-role">策略研究总监</div>
+                        <p class="member-bio">量化基金前首席策略官，拥有15年算法交易经验。专注于高维市场行为建模。</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -1111,6 +1965,102 @@
                 const newVolume = currentVolume + Math.random() * 0.5;
                 volumeElement.textContent = '$' + newVolume.toFixed(1) + 'M';
             }, 5000);
+
+            // Timeline hover animations
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    const badge = item.querySelector('.timeline-badge');
+                    badge.style.transform = 'scale(1.1)';
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    const badge = item.querySelector('.timeline-badge');
+                    badge.style.transform = 'scale(1)';
+                });
+            });
+
+            // 策略类型分布图
+            const strategyCtx = document.getElementById('strategyChart').getContext('2d');
+            const strategyChart = new Chart(strategyCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['套利策略', '趋势跟随', '做市策略', '波动交易', '跨链策略', '混合型'],
+                    datasets: [{
+                        data: [28, 22, 18, 15, 10, 7],
+                        backgroundColor: [
+                            'rgba(189, 0, 255, 0.7)',
+                            'rgba(0, 199, 255, 0.7)',
+                            'rgba(0, 255, 157, 0.7)',
+                            'rgba(0, 240, 255, 0.7)',
+                            'rgba(255, 193, 7, 0.7)',
+                            'rgba(255, 46, 109, 0.7)'
+                        ],
+                        borderColor: 'rgba(0, 15, 34, 0.8)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // 地图节点交互效果
+            const mapNodes = document.querySelectorAll('.map-node');
+            mapNodes.forEach(node => {
+                node.addEventListener('click', function () {
+                    mapNodes.forEach(n => n.style.zIndex = 1);
+                    this.style.zIndex = 2;
+                    this.style.transform = this.classList.contains('core-node') ?
+                        'translate(-50%, -50%) scale(1.3)' : 'scale(1.3)';
+
+                    // 生成连接效果
+                    const pulse = document.createElement('div');
+                    pulse.style.position = 'absolute';
+                    pulse.style.top = '0';
+                    pulse.style.left = '0';
+                    pulse.style.width = '100%';
+                    pulse.style.height = '100%';
+                    pulse.style.borderRadius = '50%';
+                    pulse.style.border = '2px solid rgba(0, 199, 255, 0.5)';
+                    pulse.style.animation = 'pulse 1s forwards';
+
+                    this.appendChild(pulse);
+
+                    setTimeout(() => {
+                        pulse.remove();
+                    }, 1000);
+                });
+            });
+
+            // 策略卡悬停效果
+            const ecosystemCards = document.querySelectorAll('.ecosystem-card');
+            ecosystemCards.forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    this.style.border = '1px solid var(--neon-blue)';
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    this.style.border = '1px solid rgba(0, 199, 255, 0.3)';
+                });
+            });
+
+            // 创建动态脉冲动画
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { transform: scale(1); opacity: 1; }
+                    100% { transform: scale(1.5); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </body>
