@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PFAI - Persona Finance AI | 基于链上行为的可进化交易人格协议</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <style>
+        :root {
+            --deep-space: #00172e;
+            --space-dark: #140029;
+            --neon-purple: #bd00ff;
+            --neon-green: #00ff9d;
+            --neon-blue: #00c7ff;
+            --highlight-blue: #00f0ff;
+            --card-bg: rgba(0, 15, 34, 0.7);
+            --text-light: #f0f7ff;
+            --text-gray: #a0b1c5;
+            --success: #0dffb2;
+            --danger: #ff2e6d;
+            --warning: #ffc107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, var(--deep-space), var(--space-dark));
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzMCkiPjxwYXRoIGQ9Ik0gMTAgMTAgTCAxMCAxMCBMIDEwIDEwIEwgMTAgMTAgTCAxMCAxMCBMIDEwIDEwIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgxMDAsIDE4MCwgMjU1LCAwLjAyKSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=');
+            opacity: 0.4;
+            z-index: -2;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 15, 34, 0.6);
+            border-bottom: 1px solid rgba(0, 199, 255, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.8rem;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            color: var(--neon-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .connect-btn {
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-blue));
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .connect-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(189, 0, 255, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4rem 5%;
+            min-height: 85vh;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 45%;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--neon-purple), #8c00ff);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(189, 0, 255, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--neon-blue);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            color: var(--neon-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 199, 255, 0.1);
+        }
+
+        /* 3D Preview Box */
+        .nft-preview {
+            flex: 1;
+            max-width: 45%;
+            background: rgba(0, 30, 60, 0.6);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 199, 255, 0.3);
+            box-shadow: 0 0 40px rgba(0, 199, 255, 0.2);
+            backdrop-filter: blur(10px);
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nft-model {
+            background: rgba(0, 10, 30, 0.8);
+            height: 100%;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 199, 255, 0.2);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .model-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .model-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(189, 0, 255, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(189, 0, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(189, 0, 255, 0);
+            }
+        }
+
+        .dna-label {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .dna-code {
+            background: rgba(0, 199, 255, 0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            color: var(--neon-blue);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            border: 1px solid var(--neon-blue);
+        }
+
+        .profit-badge {
+            background: linear-gradient(90deg, var(--neon-green), #008a5e);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            color: var(--text-light);
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Value Proposition Cards */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 4rem 0 3rem;
+            font-weight: 700;
+        }
+
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 0 5% 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .prop-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 199, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .prop-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+        }
+
+        .prop-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-green));
+        }
+
+        .prop-card h3 {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .prop-card p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .prop-card ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .prop-card li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .prop-card li::before {
+            content: '↳';
+            position: absolute;
+            left: 0;
+            color: var(--neon-blue);
+        }
+
+        .radar-chart-container {
+            background: rgba(0, 20, 40, 0.7);
+            height: 200px;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .dna-sequence {
+            background: rgba(0, 20, 40, 0.7);
+            height: 100px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--neon-blue);
+            letter-spacing: 2px;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mutating {
+            color: var(--neon-green);
+            animation: blink 1.5s infinite;
+            position: relative;
+        }
+
+        .blinking {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .evolution-bar {
+            margin-top: 1rem;
+        }
+
+        .level {
+            font-size: 0.9rem;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .xp-bar {
+            height: 10px;
+            background: rgba(100, 100, 255, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .xp-bar span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-green));
+            border-radius: 5px;
+            width: 78%;
+        }
+
+        .tokens {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .token {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .token.rent {
+            background: linear-gradient(90deg, var(--neon-purple), #8c00ff);
+        }
+
+        .token.gene {
+            background: linear-gradient(90deg, var(--neon-green), #008a5e);
+        }
+
+        .token.dao {
+            background: linear-gradient(90deg, var(--neon-blue), #0085b5);
+        }
+
+        .roi-chip {
+            background: rgba(0, 199, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            color: var(--neon-blue);
+            font-family: 'JetBrains Mono', monospace;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .roi-chip strong {
+            color: var(--neon-green);
+        }
+
+        /* Tech Comparison */
+        .tech-comparison {
+            background: rgba(0, 15, 34, 0.6);
+            border-top: 1px solid rgba(0, 199, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 199, 255, 0.2);
+            padding: 4rem 5%;
+            margin: 3rem 0;
+        }
+
+        .comparison-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .grid-header {
+            font-weight: 600;
+            padding: 1.5rem;
+            background: rgba(0, 30, 60, 0.6);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .grid-item {
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: rgba(0, 20, 40, 0.7);
+            display: flex;
+            align-items: center;
+        }
+
+        .arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--neon-green);
+        }
+
+        .danger {
+            border-left: 4px solid var(--danger);
+        }
+
+        .success {
+            border-left: 4px solid var(--success);
+        }
+
+        .grid-item.danger {
+            color: var(--danger);
+        }
+
+        .grid-item.success {
+            color: var(--success);
+        }
+
+        .live-proof {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .metric {
+            background: var(--card-bg);
+            padding: 1.5rem 2.5rem;
+            border-radius: 12px;
+            min-width: 250px;
+            border: 1px solid rgba(0, 199, 255, 0.2);
+        }
+
+        .metric .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--neon-green);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Dev Section */
+        .dev-section {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .code-editor {
+            background: rgba(0, 15, 34, 0.8);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 199, 255, 0.2);
+            padding: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-editor::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--neon-purple), var(--neon-green));
+        }
+
+        pre {
+            background: transparent !important;
+            color: var(--text-light);
+            padding-left: 1.5rem;
+        }
+
+        .code-comment {
+            color: #608fb5;
+        }
+
+        .code-keyword {
+            color: var(--neon-purple);
+        }
+
+        .code-function {
+            color: var(--neon-blue);
+        }
+
+        .code-variable {
+            color: var(--neon-green);
+        }
+
+        .code-string {
+            color: #ffc107;
+        }
+
+        .dev-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .dev-links a {
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 199, 255, 0.3);
+            transition: background 0.3s;
+        }
+
+        .dev-links a:hover {
+            background: rgba(0, 199, 255, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 10, 25, 0.9);
+            border-top: 1px solid rgba(0, 199, 255, 0.2);
+            padding: 4rem 5% 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--neon-blue);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-col a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--neon-green);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(100, 100, 255, 0.1);
+            margin-top: 2rem;
+        }
+
+        /* Particles background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .hero-content,
+            .nft-preview {
+                max-width: 100%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .arrow {
+                display: none;
+            }
+
+            .live-proof {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .metric {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-dna logo-icon"></i>
+            <span>PFAI</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#">人格铸造</a>
+            <a href="#">进化引擎</a>
+            <a href="#">基因交易</a>
+            <a href="#">生态系统</a>
+            <a href="#">开发者</a>
+            <a href="#">文档</a>
+        </nav>
+        <button class="connect-btn">
+            <i class="fas fa-wallet"></i> 连接钱包
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>TRADE LIKE <span class="gradient-text">YOUR FUTURE SELF</span></h1>
+            <p class="subtitle">链上行为进化的交易人格协议 • 首个基于ERC-6551的可进化DeFi交易体</p>
+            <div class="cta-buttons">
+                <button class="btn-primary">
+                    <i class="fas fa-plus"></i> 铸造初始人格
+                </button>
+                <button class="btn-outline">
+                    探索策略基因库 <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="nft-preview">
+            <div class="nft-model">
+                <div class="model-placeholder">
+                    <div class="model-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>交易人格 #4215</h3>
+                    <p>APEX TRADER 等级</p>
+                </div>
+            </div>
+            <div class="dna-label">
+                <div class="dna-code">DNA: [0x3A8E...F2]</div>
+                <div class="profit-badge">+37% APY</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Props Section -->
+    <h2 class="section-title">下一代交易协议的进化</h2>
+
+    <div class="value-props">
+        <!-- Card 1 -->
+        <div class="prop-card">
+            <div class="radar-chart-container">
+                <canvas id="riskRadar"></canvas>
+            </div>
+            <h3>动态人格铸造</h3>
+            <p>基于链上行为数据分析创建初始交易人格</p>
+            <ul>
+                <li>↳ Gas消耗模式分析</li>
+                <li>↳ 持仓波动率建模</li>
+                <li>↳ 交易风险偏好识别</li>
+                <li>↳ 交互协议权重分析</li>
+            </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="prop-card">
+            <div class="dna-sequence">
+                ATGC<span class="mutating">G</span>AA...T<span class="blinking">→</span>ATCGCAA...
+            </div>
+            <h3>行为进化引擎</h3>
+            <p>每一次交易都是一次基因序列突变</p>
+            <div class="evolution-bar">
+                <div class="level">Lv.6 APEX TRADER</div>
+                <div class="xp-bar"><span style="width:78%"></span></div>
+            </div>
+            <ul>
+                <li>↳ 市场反馈适应性进化</li>
+                <li>↳ 环境感知策略突变</li>
+                <li>↳ 协议组合能力进化</li>
+                <li>↳ 跨链策略基因表达</li>
+            </ul>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="prop-card">
+            <div class="tokens">
+                <span class="token rent">租赁收益</span>
+                <span class="token gene">基因交易</span>
+                <span class="token dao">治理代币</span>
+            </div>
+            <h3>社交金融生态</h3>
+            <p>完整价值生态捕获策略生命周期</p>
+            <div class="roi-chip">
+                顶级策略年化收益分配: <strong>1:3:6</strong>
+            </div>
+            <ul>
+                <li>↳ 去中心化人格租赁市场</li>
+                <li>↳ 策略基因组合交易协议</li>
+                <li>↳ 影响力代币挖矿机制</li>
+                <li>↳ 社区策略繁殖池</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Tech Comparison -->
+    <section class="tech-comparison">
+        <h2 class="section-title">突破传统AI交易天花板</h2>
+
+        <div class="comparison-grid">
+            <!-- Headers -->
+            <div class="grid-header">传统系统</div>
+            <div class="grid-header">解决方案</div>
+            <div class="grid-header">PFAI突破</div>
+
+            <!-- Row 1 -->
+            <div class="grid-item danger">❌ 静态策略复制</div>
+            <div class="grid-item arrow">→</div>
+            <div class="grid-item success">✅ 环境自适应突变</div>
+
+            <!-- Row 2 -->
+            <div class="grid-item danger">❌ 参数固化回测</div>
+            <div class="grid-item arrow">→</div>
+            <div class="grid-item success">✅ 实时链上强化学习</div>
+
+            <!-- Row 3 -->
+            <div class="grid-item danger">❌ 封闭策略黑箱</div>
+            <div class="grid-item arrow">→</div>
+            <div class="grid-item success">✅ 可组合策略基因</div>
+        </div>
+
+        <!-- Live Proof -->
+        <div class="live-proof">
+            <div class="metric">
+                <span class="value">142,963</span>
+                <span>人格进化事件今日发生</span>
+            </div>
+            <div class="metric">
+                <span class="value">$7.8M</span>
+                <span>基因交易量</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dev Section -->
+    <section class="dev-section">
+        <h2 class="section-title">构建你的交易人格体</h2>
+
+        <div class="code-editor">
+            <pre><code><span class="code-comment">// 智能合约调用示例</span>
+<span class="code-keyword">contract</span> PersonaMinter {
+    <span class="code-keyword">function</span> <span class="code-function">mintPersona</span>(
+        <span class="code-variable">bytes32</span> _dna, 
+        <span class="code-variable">uint</span> _riskProfile, 
+        <span class="code-variable">address</span> _wallet
+    ) <span class="code-keyword">public</span> <span class="code-keyword">returns</span> (<span class="code-variable">ERC6551</span> nft) {
+        <span class="code-keyword">require</span>(_validateDNA(_dna));
+        <span class="code-keyword">return</span> _mintEvolutionaryNFT(_dna, _riskProfile, _wallet);
+    }
+}</code></pre>
+        </div>
+
+        <div class="dev-links">
+            <a href="#"><i class="fas fa-file-alt"></i> 查看ERC-6551人格协议标准</a>
+            <a href="#"><i class="fas fa-api"></i> 接入行为进化API</a>
+            <a href="#"><i class="fas fa-code-branch"></i> 基因交易市场SDK</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>协议</h4>
+                <ul>
+                    <li><a href="#">白皮书</a></li>
+                    <li><a href="#">技术文档</a></li>
+                    <li><a href="#">智能合约</a></li>
+                    <li><a href="#">Github</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>生态系统</h4>
+                <ul>
+                    <li><a href="#">人格铸造器</a></li>
+                    <li><a href="#">基因交易市场</a></li>
+                    <li><a href="#">策略租赁池</a></li>
+                    <li><a href="#">治理中心</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>开发者</h4>
+                <ul>
+                    <li><a href="#">API文档</a></li>
+                    <li><a href="#">SDK工具包</a></li>
+                    <li><a href="#">测试网络</a></li>
+                    <li><a href="#">黑客马拉松</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>社区</h4>
+                <ul>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">论坛</a></li>
+                    <li><a href="#">博客</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2023 Persona Finance AI Protocol. All digital assets are experimental. DYOR.
+        </div>
+    </footer>
+
+    <script>
+        // Initialize particles.js background
+        document.addEventListener('DOMContentLoaded', function () {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#00c7ff" },
+                    opacity: { value: 0.2, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#00c7ff",
+                        opacity: 0.1,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 1,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        resize: true
+                    }
+                }
+            });
+
+            // Create radar chart for value proposition card
+            const riskCtx = document.getElementById('riskRadar').getContext('2d');
+            const riskRadar = new Chart(riskCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['风险承受', '波动偏好', '杠杆倾向', '套利能力', '跨链倾向'],
+                    datasets: [{
+                        label: '风险画像',
+                        data: [65, 80, 70, 55, 90],
+                        backgroundColor: 'rgba(0, 199, 255, 0.1)',
+                        borderColor: 'rgba(0, 199, 255, 1)',
+                        pointBackgroundColor: 'rgba(0, 199, 255, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(0, 199, 255, 1)'
+                    }]
+                },
+                options: {
+                    scale: {
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                            display: false
+                        },
+                        gridLines: {
+                            color: 'rgba(100, 100, 255, 0.1)'
+                        },
+                        angleLines: {
+                            color: 'rgba(100, 100, 255, 0.1)'
+                        }
+                    },
+                    legend: {
+                        display: false
+                    },
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: {
+                            tension: 0.3
+                        }
+                    }
+                }
+            });
+
+            // DNA sequence mutation animation
+            const dnaElement = document.querySelector('.dna-sequence');
+            let counter = 0;
+
+            setInterval(() => {
+                counter++;
+                if (counter % 6 === 0) {
+                    const chars = ['A', 'T', 'G', 'C'];
+                    const randomChar = chars[Math.floor(Math.random() * chars.length)];
+                    const randomPos = Math.floor(Math.random() * 4) + 4; // Position 4-7
+
+                    const originalText = dnaElement.textContent;
+                    const charArray = originalText.split('');
+                    charArray[randomPos] = randomChar;
+
+                    dnaElement.innerHTML = charArray.join('').replace(randomChar, `<span class="mutating">${randomChar}</span>`);
+                }
+            }, 300);
+
+            // Live metrics animation
+            function animateValue(element, start, end, duration) {
+                const range = end - start;
+                let current = start;
+                const increment = end > start ? 1 : -1;
+                const stepTime = Math.abs(Math.floor(duration / range));
+                const timer = setInterval(function () {
+                    current += increment;
+                    element.textContent = current.toLocaleString();
+                    if (current === end) clearInterval(timer);
+                }, stepTime);
+            }
+
+            const eventElement = document.querySelector('.metric .value:first-child');
+            const volumeElement = document.querySelector('.metric .value:last-child');
+
+            setInterval(() => {
+                const currentEvents = parseInt(eventElement.textContent.replace(/,/g, ''));
+                const newEvents = currentEvents + Math.floor(Math.random() * 100);
+                animateValue(eventElement, currentEvents, newEvents, 2000);
+
+                const currentVolume = parseFloat(volumeElement.textContent.replace('$', '').replace(/,/g, ''));
+                const newVolume = currentVolume + Math.random() * 0.5;
+                volumeElement.textContent = '$' + newVolume.toFixed(1) + 'M';
+            }, 5000);
+        });
+    </script>
+</body>
+
+</html>
