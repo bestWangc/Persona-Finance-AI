@@ -15,7 +15,11 @@ import {VRFV2PlusClient} from "@chainlink/contracts/src/v0.8/vrf/dev/libraries/V
 // Uncomment this line to use console.log
 import "hardhat/console.sol";
 
-contract Personality is ERC721, ERC721URIStorage, Ownable {
+contract Personality is
+    VRFConsumerBaseV2Plus,
+    ERC721,
+    ERC721URIStorage
+{
     using Strings for uint256;
 
     uint256 private _nextTokenId;
@@ -67,7 +71,6 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
         address vrfCoordinator_
     )
         ERC721("Personality Finance AI", "PFAI")
-        Ownable(msg.sender)
         VRFConsumerBaseV2Plus(vrfCoordinator_)
     {
         s_subscriptionId = subscriptionId_;
@@ -198,7 +201,7 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
         });
 
         uint256 requestId = requestRandomWords();
-        requestIdToTokenId[requestId] = tokenId_;
+        requestIdToTokenId[requestId] = newTokenId;
 
         emit PersonalityCreated(
             newTokenId,
@@ -238,10 +241,11 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
         );
     }
 
+
     ///chainlink callback
     function fulfillRandomWords(
         uint256 _requestId,
-        uint256[] memory _randomWords
+        uint256[] calldata _randomWords
     ) internal override {
         string memory color = levelColors[_randomWords[0] % 6];
         uint256 tokenId = requestIdToTokenId[_requestId];
