@@ -7,6 +7,14 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
 
+//used chainlink-VRF v2.5
+import {IVRFCoordinatorV2Plus} from "@chainlink/contracts/src/v0.8/vrf/dev/interfaces/IVRFCoordinatorV2Plus.sol";
+import {VRFConsumerBaseV2Plus} from "@chainlink/contracts/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol";
+import {VRFV2PlusClient} from "@chainlink/contracts/src/v0.8/vrf/dev/libraries/VRFV2PlusClient.sol";
+
+// Uncomment this line to use console.log
+import "hardhat/console.sol";
+
 contract Personality is ERC721, ERC721URIStorage, Ownable {
     using Strings for uint256;
 
@@ -25,6 +33,17 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
     }
     mapping(uint256 => PersonalInfo) public personalities;
 
+    uint256 s_subscriptionId;
+    bytes32 keyHash =
+        0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae;
+
+    uint16 public requestConfirmations = 3;
+
+    // VRFCoordinatorV2_5.MAX_NUM_WORDS.
+    uint32 public numWords = 1;
+
+    mapping(uint256 => uint256) public requestIdToTokenId;
+
     string[6] private levelColors = [
         "B4B4B4",
         "E0E4E8",
@@ -33,7 +52,6 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
         "F58A7E",
         "D4AF37"
     ];
-
     event PersonalityCreated(
         uint256 indexed tokenId,
         address owner,
@@ -44,10 +62,16 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
     );
     event PersonalityForRent(uint256 indexed tokenId, uint256 rentPricePerHour);
 
-    constructor()
+    constructor(
+        uint256 subscriptionId_,
+        address vrfCoordinator_
+    )
         ERC721("Personality Finance AI", "PFAI")
         Ownable(msg.sender)
-    {}
+        VRFConsumerBaseV2Plus(vrfCoordinator_)
+    {
+        s_subscriptionId = subscriptionId_;
+    }
 
     function safeMint(
         address to,
@@ -173,6 +197,9 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
             levelColor: ""
         });
 
+        uint256 requestId = requestRandomWords();
+        requestIdToTokenId[requestId] = tokenId_;
+
         emit PersonalityCreated(
             newTokenId,
             owner,
@@ -184,6 +211,7 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
         return newTokenId;
     }
 
+    ///set rent data
     function setRent(
         uint256 tokenId,
         bool _isForRent,
@@ -193,5 +221,31 @@ contract Personality is ERC721, ERC721URIStorage, Ownable {
         personalities[tokenId].isForRent = _isForRent;
         personalities[tokenId].rentPricePerHour = _rentPricePerHour;
         emit PersonalityForRent(tokenId, _rentPricePerHour);
+    }
+
+    function requestRandomWords() internal returns (uint256 requestId) {
+        requestId = s_vrfCoordinator.requestRandomWords(
+            VRFV2PlusClient.RandomWordsRequest({
+                keyHash: keyHash,
+                subId: s_subscriptionId,
+                requestConfirmations: requestConfirmations,
+                callbackGasLimit: 120000,
+                numWords: numWords,
+                extraArgs: VRFV2PlusClient._argsToBytes(
+                    VRFV2PlusClient.ExtraArgsV1({nativePayment: false})
+                )
+            })
+        );
+    }
+
+    ///chainlink callback
+    function fulfillRandomWords(
+        uint256 _requestId,
+        uint256[] memory _randomWords
+    ) internal override {
+        string memory color = levelColors[_randomWords[0] % 6];
+        uint256 tokenId = requestIdToTokenId[_requestId];
+        personalities[tokenId].levelColor = color;
+        delete requestIdToTokenId[_requestId];
     }
 }
