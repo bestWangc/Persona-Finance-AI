@@ -39,7 +39,7 @@ contract Personality is
 
     uint256 s_subscriptionId;
     bytes32 keyHash =
-        0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae;
+        0x8596b430971ac45bdf6088665b9ad8e8630c9d5049ab54b14dff711bee7c0e26;
 
     uint16 public requestConfirmations = 3;
 
