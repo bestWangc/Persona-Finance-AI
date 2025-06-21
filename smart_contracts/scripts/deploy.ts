@@ -1,5 +1,5 @@
 // import { ethers } from "ethers";
-import { ethers, network,run } from "hardhat";
+import { ethers, network, run } from "hardhat";
 
 
 async function main() {
@@ -9,10 +9,12 @@ async function main() {
         await deployer.getAddress()
     );
 
-    // const ContractFactory = await ethers.getContractFactory("Personality");
-    // console.log("Deploying contract...");
-    // const contract = await ContractFactory.deploy();
-    // await contract.waitForDeployment();
+    const subscriptionId = process.env.CHAINLINK_SUBCRIPT_ID as string;
+    const vrfCoordinatorAddress = "0xDA3b641D438362C440Ac5458c57e00a712b66700";
+    const ContractFactory = await ethers.getContractFactory("Personality");
+    console.log("Deploying contract...");
+    const contract = await ContractFactory.deploy(subscriptionId,vrfCoordinatorAddress);
+    await contract.waitForDeployment();
 
     // const Account = await ethers.deployContract("ERC6551Account");
     // const account = await Account.waitForDeployment();
