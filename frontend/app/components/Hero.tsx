@@ -7,6 +7,7 @@ const Hero = () => {
   return (
     <section className="flex flex-col lg:flex-row items-center justify-between px-[5%] py-16 min-h-[85vh] relative gap-12">
       <div className="flex-1 lg:max-w-[45%] text-center lg:text-left">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight font-bold">TRADE LIKE <span className="gradient-text">YOUR FUTURE SELF</span></h1>
         <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight text-[#FCDB17] font-bold">
           <TypeWriterText />
         </h1>

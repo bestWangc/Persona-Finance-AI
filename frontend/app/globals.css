@@ -18,6 +18,8 @@
   --color-success: #0dffb2;
   --color-danger: #ff2e6d;
   --color-warning: #ffc107;
+  --neon-green: #00ff9d;
+  --neon-blue: #00c7ff;
 }
 
 @theme {
@@ -111,4 +113,10 @@ a:hover {
 
 .animate-pulse {
   animation: pulse 2s infinite;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
