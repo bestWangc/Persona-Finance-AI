@@ -54,7 +54,7 @@ export default function TradingHistory() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen text-white relative">
       <Navbar />
 
       <main className="container mx-auto px-4 py-12">
@@ -77,10 +77,10 @@ export default function TradingHistory() {
           </div>
         </div>
 
-        <div className="bg-gray-800 rounded-lg overflow-hidden">
+        <div className="rounded-lg overflow-hidden border border-neon-blue/20" style={{ backgroundColor: 'rgba(0, 15, 34, 0.8)', backdropFilter: 'blur(10px)' }}>
           <table className="w-full">
             <thead>
-              <tr className="bg-gray-700">
+              <tr style={{ backgroundColor: 'rgba(0, 30, 60, 0.6)' }}>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
                   Time
                 </th>
@@ -101,16 +101,16 @@ export default function TradingHistory() {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-700">
+            <tbody className="divide-y divide-neon-blue/20">
               {filteredTransactions.map((tx) => (
-                <tr key={tx.id} className="hover:bg-gray-700">
+                <tr key={tx.id} className="hover:bg-neon-blue/10 transition-colors duration-200">
                   <td className="px-6 py-4 whitespace-nowrap text-sm">
                     {new Date(tx.timestamp).toLocaleString()}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${tx.type === 'buy' ? 'bg-green-900 text-green-300' :
-                        tx.type === 'sell' ? 'bg-red-900 text-red-300' :
-                          'bg-blue-900 text-blue-300'
+                      tx.type === 'sell' ? 'bg-red-900 text-red-300' :
+                        'bg-blue-900 text-blue-300'
                       }`}>
                       {tx.type.toUpperCase()}
                     </span>
@@ -126,8 +126,8 @@ export default function TradingHistory() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${tx.status === 'completed' ? 'bg-green-900 text-green-300' :
-                        tx.status === 'pending' ? 'bg-yellow-900 text-yellow-300' :
-                          'bg-red-900 text-red-300'
+                      tx.status === 'pending' ? 'bg-yellow-900 text-yellow-300' :
+                        'bg-red-900 text-red-300'
                       }`}>
                       {tx.status.toUpperCase()}
                     </span>
@@ -153,9 +153,9 @@ const FilterButton = ({
 }) => (
   <button
     onClick={onClick}
-    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${active
-        ? 'bg-blue-600 text-white'
-        : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 border ${active
+      ? 'bg-neon-blue text-white border-neon-blue shadow-lg shadow-neon-blue/30'
+      : 'bg-transparent text-gray-300 border-neon-blue/30 hover:bg-neon-blue/10 hover:border-neon-blue/50'
       }`}
   >
     {children}

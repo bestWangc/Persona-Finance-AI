@@ -78,7 +78,7 @@ export default function Leaderboard() {
   const [entries] = useState<LeaderboardEntry[]>(mockLeaderboardData);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen text-white relative">
       <Navbar />
 
       <main className="container mx-auto px-4 py-12">

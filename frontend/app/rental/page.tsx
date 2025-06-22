@@ -130,7 +130,7 @@ export default function Rental() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen text-white relative">
       <Navbar />
 
       <main className="container mx-auto px-4 py-12">
@@ -190,8 +190,8 @@ const NFTCard = ({
           </p>
         </div>
         <span className={`px-3 py-1 rounded-full text-sm ${nft.rentalInfo.available
-            ? 'bg-green-900 text-green-300'
-            : 'bg-red-900 text-red-300'
+          ? 'bg-green-900 text-green-300'
+          : 'bg-red-900 text-red-300'
           }`}>
           {nft.rentalInfo.available ? 'Available' : 'Rented'}
         </span>
@@ -224,8 +224,8 @@ const NFTCard = ({
           onClick={onRent}
           disabled={!nft.rentalInfo.available || isRenting}
           className={`w-full py-2 px-4 rounded-lg font-medium transition-colors ${nft.rentalInfo.available && !isRenting
-              ? 'bg-blue-600 hover:bg-blue-700'
-              : 'bg-gray-700 cursor-not-allowed'
+            ? 'bg-blue-600 hover:bg-blue-700'
+            : 'bg-gray-700 cursor-not-allowed'
             }`}
         >
           {isRenting ? 'Processing...' : nft.rentalInfo.available ? 'Rent Now' : 'Currently Rented'}

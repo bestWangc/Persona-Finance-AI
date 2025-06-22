@@ -25,7 +25,7 @@ export default function CreateNFT() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen text-white relative">
       <Navbar />
 
       <main className="container mx-auto px-4 py-12">
@@ -128,8 +128,8 @@ const FormSection = ({
           type="button"
           onClick={() => onChange(option.value)}
           className={`p-3 rounded ${value === option.value
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+            ? 'bg-blue-600 text-white'
+            : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
             }`}
         >
           {option.label}

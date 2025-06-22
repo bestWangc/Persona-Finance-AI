@@ -45,13 +45,13 @@ export default function Personality() {
   const [personality] = useState<Personality>(mockPersonality);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen text-white relative">
       <Navbar />
 
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           {/* 头部信息 */}
-          <div className="bg-gray-800 rounded-lg p-8 mb-8">
+          <div className="rounded-lg p-8 mb-8 border border-neon-blue/20" style={{ backgroundColor: 'rgba(0, 15, 34, 0.8)', backdropFilter: 'blur(10px)' }}>
             <div className="flex justify-between items-start mb-6">
               <div>
                 <h1 className="text-3xl font-bold mb-2">{personality.name}</h1>
@@ -155,9 +155,9 @@ export default function Personality() {
 }
 
 const StatCard = ({ title, value }: { title: string; value: string }) => (
-  <div className="bg-gray-700 rounded-lg p-4">
+  <div className="rounded-lg p-4 border border-neon-blue/20" style={{ backgroundColor: 'rgba(0, 30, 60, 0.6)' }}>
     <h3 className="text-sm text-gray-400 mb-1">{title}</h3>
-    <p className="text-2xl font-bold">{value}</p>
+    <p className="text-2xl font-bold text-neon-green">{value}</p>
   </div>
 );
 
