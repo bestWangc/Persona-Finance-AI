@@ -1,5 +1,5 @@
 // import { ethers } from "ethers";
-import { ethers, network,run } from "hardhat";
+import { ethers, network, run } from "hardhat";
 
 
 async function main() {
@@ -9,10 +9,14 @@ async function main() {
         await deployer.getAddress()
     );
 
+    const subscriptionId = process.env.CHAINLINK_SUBCRIPT_ID as string;
+    const vrfCoordinatorAddress = "0xDA3b641D438362C440Ac5458c57e00a712b66700";
+
     // const ContractFactory = await ethers.getContractFactory("Personality");
     // console.log("Deploying contract...");
-    // const contract = await ContractFactory.deploy();
+    // const contract = await ContractFactory.deploy(subscriptionId,vrfCoordinatorAddress);
     // await contract.waitForDeployment();
+    // console.log("PFAI contract deployed at:", await contract.getAddress());
 
     // const Account = await ethers.deployContract("ERC6551Account");
     // const account = await Account.waitForDeployment();
@@ -20,7 +24,7 @@ async function main() {
     // const Registry = await ethers.deployContract("ERC6551Registry");
     // const registry = await Registry.waitForDeployment();
 
-    // console.log("PFAI contract deployed at:", await contract.getAddress());
+    
     // console.log("Account contract deployed at:", await account.getAddress());
     // console.log("Registry contract deployed at:", await registry.getAddress());
 
@@ -37,8 +41,9 @@ async function main() {
             // let contractPath = `contracts/${contractName}.sol:${contractName}`;
 
             await run("verify:verify", {
-                address: "0x7016Ed86CEc2b579819066e03cBe611643B73BDA",
+                address: "0x792B4499024284eDbB1448eabC7B39a0C0010894",
                 // contract: contractPath,
+                constructorArguments: [subscriptionId,vrfCoordinatorAddress],
             });
         } catch (error) {
             console.error(`Failed to verify contract: ${error}`);
