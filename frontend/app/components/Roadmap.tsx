@@ -35,8 +35,8 @@ const roadmapData: RoadmapItem[] = [
       '10,000+个初始人格NFT铸造',
       '完成第一轮融资'
     ],
-    completed: true,
-    icon: 'fas fa-check',
+    completed: false,
+    icon: 'fas fa-rocket',
     position: 'right'
   },
   {
@@ -49,7 +49,7 @@ const roadmapData: RoadmapItem[] = [
       'API开放使用'
     ],
     completed: false,
-    icon: 'fas fa-rocket',
+    icon: 'fas fa-dna',
     position: 'left'
   },
   {
