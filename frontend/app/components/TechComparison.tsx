@@ -59,7 +59,7 @@ const TechComparison = () => {
         <div className="p-6 px-10 rounded-xl min-w-[250px] border border-neon-blue/20 text-white" style={{ backgroundColor: 'rgba(0, 15, 34, 0.7)' }}>
           <span className="text-4xl font-bold block mb-2 text-neon-green font-mono">
             <CountingNumber
-              targetNumber={12458}
+              targetNumber={12}
               duration={2800}
               continuousAnimation={true}
               className="text-neon-green"
@@ -71,7 +71,7 @@ const TechComparison = () => {
           <span className="text-4xl font-bold block mb-2 text-neon-green font-mono">
             $
             <CountingNumber
-              targetNumber={2345}
+              targetNumber={0.1}
               duration={2800}
               continuousAnimation={true}
               className="text-neon-green"
