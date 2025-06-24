@@ -12,41 +12,43 @@ interface RoadmapItem {
   position: 'left' | 'right';
 }
 
+// icon: 'fas fa-check',
 const roadmapData: RoadmapItem[] = [
   {
     phase: 'Part 1',
-    title: 'Proof of Concept Complete',
-    description: 'Completed smart contract architecture design for core protocol and on-chain behavioral data analysis model construction, successfully validating the feasibility of trading personality minting and initial evolution.',
+    title: 'Proof of concept completed',
+    description: 'Completed the smart contract architecture design of the core protocol and the construction of the on-chain behavior data analysis model, and successfully verified the feasibility of transaction personality casting and initial evolution.',
     features: [
-      'ERC-6551 Base Protocol Implementation',
-      'Trading Gene Mutation Algorithm Verification',
-      'Whitepaper V1 Release'
+      'ERC-6551 Smart Contract',
+      'Evolutionary Algorithm Verification',
+      'Basic evolution completed',
+      'White Paper Release'
     ],
-    completed: true,
-    icon: 'fas fa-check',
+    completed: false,
+    icon: 'fas fa-rocket',
     position: 'left'
   },
   {
     phase: 'Part 2',
-    title: '测试网启动',
-    description: '在以太坊Goerli测试网和Polygon Mumbai测试网部署PFAI协议，开放早期社区用户测试。',
+    title: 'Testnet launch',
+    description: 'Deploy the PFAI protocol and open it to early community user testing.',
     features: [
-      '人格铸造器V1发布',
-      '10,000+个初始人格NFT铸造',
-      '完成第一轮融资'
+      'Personality Forger V1 released',
+      '10,000+ initial personality NFT minting',
+      'Verify the results'
     ],
     completed: false,
-    icon: 'fas fa-rocket',
+    icon: 'fas fa-dna',
     position: 'right'
   },
   {
     phase: 'Part 3',
-    title: '主网V1上线',
-    description: 'PFAI主网在以太坊、Polygon主网上线，全面开放交易人格铸造、基因突变与基础租赁功能。',
+    title: 'Mainnet V1 is launched',
+    description: 'The PFAI mainnet is launched on the Ethereum, Polygon, and BSC mainnets, fully opening up trading personality casting, personality evolution, and basic leasing functions.',
     features: [
-      '交易人格进化引擎上线',
-      '基因交易市场Alpha版',
-      'API开放使用'
+      'Evolvable Personality AI Agent Released',
+      'Alpha version of the trading market',
+      'API open'
     ],
     completed: false,
     icon: 'fas fa-dna',
@@ -54,12 +56,12 @@ const roadmapData: RoadmapItem[] = [
   },
   {
     phase: 'Part 4',
-    title: '社交金融生态扩展',
-    description: '实现跨链策略基因表达，推出治理代币PFAI，构建完整的去中心化交易人格生态系统。',
+    title: 'Social finance ecosystem expansion',
+    description: 'Implement cross-chain strategy, launch governance token PFAI, and build a complete decentralized trading personality ecosystem.',
     features: [
-      '人格繁殖池上线',
-      '策略基因跨链协议实现',
-      'DAO治理系统启动'
+      'SocialFi release',
+      'Strategy cross-chain implementation',
+      'DAO governance system launched'
     ],
     completed: false,
     icon: 'fas fa-dna',

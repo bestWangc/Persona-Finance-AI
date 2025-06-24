@@ -6,6 +6,12 @@ By creating self-evolving on-chain trading personas(ERC-6551 NFT), PFAI addresse
 2. **User Accessibility Barrier** – Complex DeFi strategies exceed mainstream users' technical capacity
 3. **Value Capture** – High-performing strategies lack mechanisms for shared value distribution.
 
+### Chainlink
+We use VFT to change the properties, the file link:
+https://github.com/bestWangc/Persona-Finance-AI/blob/main/smart_contracts/contracts/Personality.sol
+
+In the future, we will use Chainlink's CCIP to implement more cross chain strategies
+
 ### Core Innovation Modules
 
 PFAI achieves breakthrough innovation through three core modular architectures:

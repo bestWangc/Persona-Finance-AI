@@ -9,10 +9,10 @@ const Ecosystem = () => {
     <section className="py-16 px-[5%] bg-deep-space/60 border-t border-b border-neon-blue/20">
       <div className="text-center max-w-4xl mx-auto mb-12">
         <h2 className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent text-4xl font-bold">
-          Real-time Trading Strategy Ecosystem
+          Real-time Trading Strategy Protocol
         </h2>
         <p className="text-text-gray text-lg">
-          Explore the evolutionary ecosystem of trading personalities and strategy genes in the PFAI network
+          Exploring the Evolutionary Ecosystem of Trading Personalities and Strategy Genes in the PFAI
         </p>
       </div>
 
@@ -23,26 +23,26 @@ const Ecosystem = () => {
             <div className="w-12 h-12 rounded-full bg-neon-blue/10 flex items-center justify-center mr-4 text-2xl text-neon-blue">
               <i className="fas fa-microchip"></i>
             </div>
-            <h3>Active Strategy Distribution</h3>
+            <h3>Active Strategy Pool</h3>
           </div>
-          <p className="text-text-gray mb-8">Distribution of trading personality types and real-time activity status currently running on the platform</p>
+          <p className="text-text-gray mb-8">Live Trait Distribution & Activity</p>
 
           <div className="grid grid-cols-2 gap-4 mb-8">
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
               <div className="text-3xl font-bold text-neon-green mb-1 font-mono">
                 <CountingNumber
-                  targetNumber={42859}
+                  targetNumber={26}
                   duration={2500}
                   continuousAnimation={true}
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">Trading Personalities</div>
+              <div className="text-sm text-text-gray">Personality</div>
             </div>
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
               <div className="text-3xl font-bold text-neon-green mb-1 font-mono">
                 <CountingNumber
-                  targetNumber={18.2}
+                  targetNumber={0.2}
                   duration={2000}
                   continuousAnimation={true}
                   suffix="%"
@@ -50,20 +50,20 @@ const Ecosystem = () => {
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">Monthly Growth</div>
+              <div className="text-sm text-text-gray">Monthly growth rate</div>
             </div>
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center col-span-2">
               <div className="text-3xl font-bold text-neon-green mb-1 font-mono">
                 <CountingNumber
-                  targetNumber={3200000}
+                  targetNumber={1260}
                   duration={3000}
                   continuousAnimation={true}
-                  suffix="M"
+                  suffix=""
                   formatNumber={false}
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">Evolution Events</div>
+              <div className="text-sm text-text-gray">DNA Upgrade Event</div>
             </div>
           </div>
 
@@ -97,11 +97,11 @@ const Ecosystem = () => {
             <div className="w-12 h-12 rounded-full bg-neon-blue/10 flex items-center justify-center mr-4 text-2xl text-neon-blue">
               <i className="fas fa-dna"></i>
             </div>
-            <h3>Strategy Gene Market</h3>
+            <h3>Popular Personality</h3>
           </div>
-          <p className="text-text-gray mb-8">Trading volume, value and historical performance of popular strategy genes</p>
+          <p className="text-text-gray mb-8">Volume, Value and Historical Performance</p>
 
-          <div className="grid grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols gap-4 mb-8">
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
               <div className="text-2xl font-bold text-neon-green mb-1 font-mono">
                 <CountingNumber
@@ -114,9 +114,9 @@ const Ecosystem = () => {
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">Daily Volume</div>
+              <div className="text-sm text-text-gray">Daily Trading Volume</div>
             </div>
-            <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
+            {/* <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
               <div className="text-2xl font-bold text-neon-green mb-1 font-mono">
                 <CountingNumber
                   targetNumber={12458}
@@ -125,18 +125,18 @@ const Ecosystem = () => {
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">Gene Sequences</div>
-            </div>
-            <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
+              <div className="text-sm text-text-gray">基因序列</div>
+            </div> */}
+            {/* <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
               <div className="text-2xl font-bold text-neon-green mb-1 font-mono">ETH</div>
-              <div className="text-sm text-text-gray">Primary Token</div>
-            </div>
+              <div className="text-sm text-text-gray">主要币种</div>
+            </div> */}
           </div>
 
           <div className="mb-6">
             <div className="flex justify-between mb-4 pb-2.5 border-b border-neon-blue/20">
-              <h4 className="font-semibold">Popular Trading Genes</h4>
-              <span className="text-text-gray">Avg ROI</span>
+              <h4 className="font-semibold">Ranking</h4>
+              <span className="text-text-gray">Average ROI</span>
             </div>
 
             <div className="space-y-2.5">
@@ -148,7 +148,7 @@ const Ecosystem = () => {
                   <i className="fas fa-bolt"></i>
                 </div>
                 <div className="flex-1">
-                  <div className="font-semibold mb-1">Lightning Arbitrage Gene</div>
+                  <div className="font-semibold mb-1">Flash Arbitrage</div>
                   <div className="text-sm text-text-gray font-mono">0x8A-F3-4D</div>
                 </div>
                 <div className="font-mono font-bold text-neon-green">+38.5%</div>
@@ -162,7 +162,7 @@ const Ecosystem = () => {
                   <i className="fas fa-chart-line"></i>
                 </div>
                 <div className="flex-1">
-                  <div className="font-semibold mb-1">Trend Following Strategy</div>
+                  <div className="font-semibold mb-1">Trend Following</div>
                   <div className="text-sm text-text-gray font-mono">0x9B-C2-5E</div>
                 </div>
                 <div className="font-mono font-bold text-neon-green">+32.1%</div>
@@ -181,12 +181,25 @@ const Ecosystem = () => {
                 </div>
                 <div className="font-mono font-bold text-neon-green">+27.8%</div>
               </div>
+              <div className="flex items-center p-4 bg-blue-950/50 rounded-2xl transition-all duration-300 hover:bg-neon-blue/10">
+                <div className="w-7 h-7 bg-gradient-to-br from-neon-purple to-neon-blue rounded-full flex items-center justify-center text-sm font-bold mr-4">
+                  4
+                </div>
+                <div className="w-10 h-10 bg-gradient-to-br from-neon-blue to-neon-purple rounded-full flex items-center justify-center text-xl mr-4">
+                  <i className="fas fa-coins"></i>
+                </div>
+                <div className="flex-1">
+                  <div className="font-semibold mb-1">Market Making</div>
+                  <div className="text-sm text-text-gray font-mono">0x63-g6-k6</div>
+                </div>
+                <div className="font-mono font-bold text-neon-green">+9.8%</div>
+              </div>
             </div>
           </div>
 
-          <a href="#" className="inline-flex items-center text-neon-blue mt-8 font-semibold gap-2.5 no-underline">
-            Explore Full Gene Market <i className="fas fa-arrow-right"></i>
-          </a>
+          {/* <a href="#" className="inline-flex items-center text-neon-blue mt-8 font-semibold gap-2.5 no-underline">
+            探索完整基因市场 <i className="fas fa-arrow-right"></i>
+          </a> */}
         </div>
 
         {/* Evolution Ecosystem Card */}
@@ -195,45 +208,45 @@ const Ecosystem = () => {
             <div className="w-12 h-12 rounded-full bg-neon-blue/10 flex items-center justify-center mr-4 text-2xl text-neon-blue">
               <i className="fas fa-project-diagram"></i>
             </div>
-            <h3>Strategy Evolution Map</h3>
+            <h3>Strategy Evolution Graph</h3>
           </div>
-          <p className="text-text-gray mb-8">Evolution paths of trading strategies and ecological relationships of emerging strategy clusters</p>
+          <p className="text-text-gray mb-8">The evolution path of trading strategies and the ecological relationship between emerging strategy clusters</p>
 
           <div className="grid grid-cols-3 gap-4 mb-8">
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
               <div className="text-2xl font-bold text-neon-green mb-1 font-mono">
                 <CountingNumber
-                  targetNumber={142}
+                  targetNumber={32}
                   duration={1800}
                   continuousAnimation={true}
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">Strategy Clusters</div>
+              <div className="text-sm text-text-gray">Strategy Cluster</div>
             </div>
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
               <div className="text-2xl font-bold text-neon-green mb-1 font-mono">
                 <CountingNumber
-                  targetNumber={29}
+                  targetNumber={8}
                   duration={1500}
                   continuousAnimation={true}
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">New Mutations</div>
+              <div className="text-sm text-text-gray">New Mutation Cluster</div>
             </div>
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
               <div className="text-2xl font-bold text-neon-green mb-1 font-mono">
                 <CountingNumber
-                  targetNumber={0.48}
-                  duration={2000}
+                  targetNumber={0.12}
+                  duration={1500}
                   continuousAnimation={true}
                   suffix="%"
                   formatNumber={false}
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">Daily Mutation Rate</div>
+              <div className="text-sm text-text-gray">Daily evolution rate</div>
             </div>
           </div>
 
@@ -253,7 +266,7 @@ const Ecosystem = () => {
                 <i className="fas fa-exchange-alt"></i>
               </div>
               <div className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 whitespace-nowrap text-xs text-neon-blue">
-                Arbitrage
+                MEV Derivative Pool
               </div>
             </div>
 
@@ -262,7 +275,7 @@ const Ecosystem = () => {
                 <i className="fas fa-trending-up"></i>
               </div>
               <div className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 whitespace-nowrap text-xs text-neon-blue">
-                Trend Following
+                Trend Tracking
               </div>
             </div>
 
@@ -271,7 +284,7 @@ const Ecosystem = () => {
                 <i className="fas fa-flask"></i>
               </div>
               <div className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 whitespace-nowrap text-xs text-neon-blue">
-                Volatility
+                Volatility Harvesting
               </div>
             </div>
 

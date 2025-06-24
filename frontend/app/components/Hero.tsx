@@ -21,12 +21,9 @@ const Hero = () => {
           <Link href="/create-nft" className="bg-gradient-to-r from-[#bd00ff] to-[#8c00ff] border-none px-8 py-4 rounded-xl text-white font-semibold text-lg cursor-pointer flex items-center gap-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(189,0,255,0.5)] justify-center no-underline">
             <i className="fas fa-plus"></i> Mint Initial Personality
           </Link>
-
-
-          <Link href="/rental" className="bg-transparent border-2 border-[#00c7ff] px-8 py-4 rounded-xl text-[#00c7ff] font-semibold text-lg cursor-pointer flex items-center gap-2.5 transition-all duration-300 hover:bg-neon-blue/10 justify-center no-underline">
-            Explore Strategy Gene Pool <i className="fas fa-arrow-right"></i>
-          </Link>
-
+          {/* <button className="bg-transparent border-2 border-[#00c7ff] px-8 py-4 rounded-xl text-[#00c7ff] font-semibold text-lg cursor-pointer flex items-center gap-2.5 transition-all duration-300 hover:bg-neon-blue/10 justify-center">
+            探索策略基因库 <i className="fas fa-arrow-right"></i>
+          </button> */}
         </div>
       </div>
 
