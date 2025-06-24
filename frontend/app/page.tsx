@@ -4,6 +4,8 @@ import ValueProposition from './components/ValueProposition';
 import TechComparison from './components/TechComparison';
 import Ecosystem from './components/Ecosystem';
 import Roadmap from './components/Roadmap';
+import Team from './components/Team';
+import Footer from './components/Footer';
 
 export default function Home() {
   return (
@@ -21,6 +23,8 @@ export default function Home() {
       <TechComparison />
       <Ecosystem />
       <Roadmap />
+      <Team />
+      <Footer />
     </div>
   );
 }

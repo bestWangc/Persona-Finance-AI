@@ -1,0 +1,48 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00172E"/>
+      <stop offset="1" stop-color="#140029"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BD00FF"/>
+      <stop offset="0.5" stop-color="#00C7FF"/>
+      <stop offset="1" stop-color="#00FF9D"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#bg)"/>
+  
+  <!-- Grid Pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0, 199, 255, 0.1)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="url(#grid)"/>
+  
+  <!-- Central Icon -->
+  <circle cx="200" cy="150" r="40" fill="none" stroke="url(#accent)" stroke-width="3" opacity="0.6"/>
+  <circle cx="200" cy="150" r="25" fill="url(#accent)" opacity="0.3"/>
+  
+  <!-- DNA Helix -->
+  <path d="M160 200 Q200 180 240 200 Q200 220 160 240 Q200 220 240 240" 
+        fill="none" stroke="url(#accent)" stroke-width="2" opacity="0.7"/>
+  <path d="M240 200 Q200 180 160 200 Q200 220 240 240 Q200 220 160 240" 
+        fill="none" stroke="url(#accent)" stroke-width="2" opacity="0.7"/>
+  
+  <!-- Dots -->
+  <circle cx="180" cy="190" r="3" fill="#00C7FF"/>
+  <circle cx="220" cy="210" r="3" fill="#BD00FF"/>
+  <circle cx="180" cy="230" r="3" fill="#00FF9D"/>
+  <circle cx="220" cy="250" r="3" fill="#00C7FF"/>
+  
+  <!-- Text -->
+  <text x="200" y="320" text-anchor="middle" fill="url(#accent)" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+    Trading Personality NFT
+  </text>
+  <text x="200" y="340" text-anchor="middle" fill="rgba(160, 177, 197, 0.8)" font-family="Arial, sans-serif" font-size="12">
+    Persona Finance AI
+  </text>
+</svg>

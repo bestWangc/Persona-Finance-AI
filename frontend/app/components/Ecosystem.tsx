@@ -9,10 +9,10 @@ const Ecosystem = () => {
     <section className="py-16 px-[5%] bg-deep-space/60 border-t border-b border-neon-blue/20">
       <div className="text-center max-w-4xl mx-auto mb-12">
         <h2 className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent text-4xl font-bold">
-          实时交易策略生态系统
+          Real-time Trading Strategy Ecosystem
         </h2>
         <p className="text-text-gray text-lg">
-          探索PFAI网络中的交易人格与策略基因的进化生态系统
+          Explore the evolutionary ecosystem of trading personalities and strategy genes in the PFAI network
         </p>
       </div>
 
@@ -23,9 +23,9 @@ const Ecosystem = () => {
             <div className="w-12 h-12 rounded-full bg-neon-blue/10 flex items-center justify-center mr-4 text-2xl text-neon-blue">
               <i className="fas fa-microchip"></i>
             </div>
-            <h3>活跃策略分布</h3>
+            <h3>Active Strategy Distribution</h3>
           </div>
-          <p className="text-text-gray mb-8">平台当前运行的交易人格类型分布与实时活动状态</p>
+          <p className="text-text-gray mb-8">Distribution of trading personality types and real-time activity status currently running on the platform</p>
 
           <div className="grid grid-cols-2 gap-4 mb-8">
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
@@ -37,7 +37,7 @@ const Ecosystem = () => {
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">交易人格</div>
+              <div className="text-sm text-text-gray">Trading Personalities</div>
             </div>
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
               <div className="text-3xl font-bold text-neon-green mb-1 font-mono">
@@ -50,7 +50,7 @@ const Ecosystem = () => {
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">月增长率</div>
+              <div className="text-sm text-text-gray">Monthly Growth</div>
             </div>
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center col-span-2">
               <div className="text-3xl font-bold text-neon-green mb-1 font-mono">
@@ -63,7 +63,7 @@ const Ecosystem = () => {
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">进化事件</div>
+              <div className="text-sm text-text-gray">Evolution Events</div>
             </div>
           </div>
 
@@ -91,15 +91,15 @@ const Ecosystem = () => {
           </div>
         </div>
 
-        {/* 基因市场卡 */}
+        {/* Gene Market Card */}
         <div className="bg-[rgba(0,15,34,0.7)] rounded-2xl p-8 border border-neon-blue/30 relative overflow-hidden transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_10px_30px_rgba(0,199,255,0.2)] h-full before:content-[''] before:absolute before:top-0 before:left-0 before:w-1 before:h-full before:bg-gradient-to-b before:from-neon-purple before:via-neon-blue before:to-neon-green">
           <div className="flex items-center mb-6 text-2xl">
             <div className="w-12 h-12 rounded-full bg-neon-blue/10 flex items-center justify-center mr-4 text-2xl text-neon-blue">
               <i className="fas fa-dna"></i>
             </div>
-            <h3>策略基因市场</h3>
+            <h3>Strategy Gene Market</h3>
           </div>
-          <p className="text-text-gray mb-8">热门策略基因的交易量、价值和历史表现</p>
+          <p className="text-text-gray mb-8">Trading volume, value and historical performance of popular strategy genes</p>
 
           <div className="grid grid-cols-3 gap-4 mb-8">
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
@@ -114,7 +114,7 @@ const Ecosystem = () => {
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">日交易量</div>
+              <div className="text-sm text-text-gray">Daily Volume</div>
             </div>
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
               <div className="text-2xl font-bold text-neon-green mb-1 font-mono">
@@ -125,18 +125,18 @@ const Ecosystem = () => {
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">基因序列</div>
+              <div className="text-sm text-text-gray">Gene Sequences</div>
             </div>
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
               <div className="text-2xl font-bold text-neon-green mb-1 font-mono">ETH</div>
-              <div className="text-sm text-text-gray">主要币种</div>
+              <div className="text-sm text-text-gray">Primary Token</div>
             </div>
           </div>
 
           <div className="mb-6">
             <div className="flex justify-between mb-4 pb-2.5 border-b border-neon-blue/20">
-              <h4 className="font-semibold">热门交易基因</h4>
-              <span className="text-text-gray">平均ROI</span>
+              <h4 className="font-semibold">Popular Trading Genes</h4>
+              <span className="text-text-gray">Avg ROI</span>
             </div>
 
             <div className="space-y-2.5">
@@ -148,7 +148,7 @@ const Ecosystem = () => {
                   <i className="fas fa-bolt"></i>
                 </div>
                 <div className="flex-1">
-                  <div className="font-semibold mb-1">闪电套利基因</div>
+                  <div className="font-semibold mb-1">Lightning Arbitrage Gene</div>
                   <div className="text-sm text-text-gray font-mono">0x8A-F3-4D</div>
                 </div>
                 <div className="font-mono font-bold text-neon-green">+38.5%</div>
@@ -162,7 +162,7 @@ const Ecosystem = () => {
                   <i className="fas fa-chart-line"></i>
                 </div>
                 <div className="flex-1">
-                  <div className="font-semibold mb-1">趋势跟踪策略</div>
+                  <div className="font-semibold mb-1">Trend Following Strategy</div>
                   <div className="text-sm text-text-gray font-mono">0x9B-C2-5E</div>
                 </div>
                 <div className="font-mono font-bold text-neon-green">+32.1%</div>
@@ -176,7 +176,7 @@ const Ecosystem = () => {
                   <i className="fas fa-coins"></i>
                 </div>
                 <div className="flex-1">
-                  <div className="font-semibold mb-1">多池流动性</div>
+                  <div className="font-semibold mb-1">Multi-Pool Liquidity</div>
                   <div className="text-sm text-text-gray font-mono">0x5D-A8-F1</div>
                 </div>
                 <div className="font-mono font-bold text-neon-green">+27.8%</div>
@@ -185,19 +185,19 @@ const Ecosystem = () => {
           </div>
 
           <a href="#" className="inline-flex items-center text-neon-blue mt-8 font-semibold gap-2.5 no-underline">
-            探索完整基因市场 <i className="fas fa-arrow-right"></i>
+            Explore Full Gene Market <i className="fas fa-arrow-right"></i>
           </a>
         </div>
 
-        {/* 进化生态系统卡 */}
+        {/* Evolution Ecosystem Card */}
         <div className="bg-[rgba(0,15,34,0.7)] rounded-2xl p-8 border border-neon-blue/30 relative overflow-hidden transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_10px_30px_rgba(0,199,255,0.2)] h-full before:content-[''] before:absolute before:top-0 before:left-0 before:w-1 before:h-full before:bg-gradient-to-b before:from-neon-purple before:via-neon-blue before:to-neon-green">
           <div className="flex items-center mb-6 text-2xl">
             <div className="w-12 h-12 rounded-full bg-neon-blue/10 flex items-center justify-center mr-4 text-2xl text-neon-blue">
               <i className="fas fa-project-diagram"></i>
             </div>
-            <h3>策略进化图谱</h3>
+            <h3>Strategy Evolution Map</h3>
           </div>
-          <p className="text-text-gray mb-8">交易策略的演变路径与新兴策略集群的生态关系</p>
+          <p className="text-text-gray mb-8">Evolution paths of trading strategies and ecological relationships of emerging strategy clusters</p>
 
           <div className="grid grid-cols-3 gap-4 mb-8">
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
@@ -209,7 +209,7 @@ const Ecosystem = () => {
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">策略集群</div>
+              <div className="text-sm text-text-gray">Strategy Clusters</div>
             </div>
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
               <div className="text-2xl font-bold text-neon-green mb-1 font-mono">
@@ -220,7 +220,7 @@ const Ecosystem = () => {
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">新突变簇</div>
+              <div className="text-sm text-text-gray">New Mutations</div>
             </div>
             <div className="bg-deep-space/70 rounded-2xl p-4 border border-neon-blue/20 text-center">
               <div className="text-2xl font-bold text-neon-green mb-1 font-mono">
@@ -233,7 +233,7 @@ const Ecosystem = () => {
                   className="text-neon-green"
                 />
               </div>
-              <div className="text-sm text-text-gray">日突变率</div>
+              <div className="text-sm text-text-gray">Daily Mutation Rate</div>
             </div>
           </div>
 
@@ -244,7 +244,7 @@ const Ecosystem = () => {
                 <i className="fas fa-brain"></i>
               </div>
               <div className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 whitespace-nowrap text-xs text-neon-blue">
-                核心策略
+                Core Strategy
               </div>
             </div>
 
@@ -253,7 +253,7 @@ const Ecosystem = () => {
                 <i className="fas fa-exchange-alt"></i>
               </div>
               <div className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 whitespace-nowrap text-xs text-neon-blue">
-                套利衍生
+                Arbitrage
               </div>
             </div>
 
@@ -262,7 +262,7 @@ const Ecosystem = () => {
                 <i className="fas fa-trending-up"></i>
               </div>
               <div className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 whitespace-nowrap text-xs text-neon-blue">
-                趋势跟踪
+                Trend Following
               </div>
             </div>
 
@@ -271,7 +271,7 @@ const Ecosystem = () => {
                 <i className="fas fa-flask"></i>
               </div>
               <div className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 whitespace-nowrap text-xs text-neon-blue">
-                波动捕捉
+                Volatility
               </div>
             </div>
 
@@ -280,7 +280,7 @@ const Ecosystem = () => {
                 <i className="fas fa-link"></i>
               </div>
               <div className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 whitespace-nowrap text-xs text-neon-blue">
-                跨链策略
+                Cross-chain
               </div>
             </div>
 

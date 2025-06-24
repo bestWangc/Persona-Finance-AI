@@ -2,8 +2,10 @@
 
 import React from 'react';
 import TypeWriterText from './TypeWriterText';
+import Link from 'next/link';
 
 const Hero = () => {
+
   return (
     <section className="flex flex-col lg:flex-row items-center justify-between px-[5%] py-16 min-h-[85vh] relative gap-12">
       <div className="flex-1 lg:max-w-[45%] text-center lg:text-left">
@@ -15,12 +17,16 @@ const Hero = () => {
           On-Chain Behavioral Evolution Transaction Personality Protocol • The First Evolvable DeFi Trading Entity
         </p>
         <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-          <button className="bg-gradient-to-r from-[#bd00ff] to-[#8c00ff] border-none px-8 py-4 rounded-xl text-white font-semibold text-lg cursor-pointer flex items-center gap-2.5  duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(189,0,255,0.5)] justify-center">
+
+          <Link href="/create-nft" className="bg-gradient-to-r from-[#bd00ff] to-[#8c00ff] border-none px-8 py-4 rounded-xl text-white font-semibold text-lg cursor-pointer flex items-center gap-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(189,0,255,0.5)] justify-center no-underline">
             <i className="fas fa-plus"></i> Mint Initial Personality
-          </button>
-          <button className="bg-transparent border-2 border-[#00c7ff] px-8 py-4 rounded-xl text-[#00c7ff] font-semibold text-lg cursor-pointer flex items-center gap-2.5 transition-all duration-300 hover:bg-neon-blue/10 justify-center">
-            探索策略基因库 <i className="fas fa-arrow-right"></i>
-          </button>
+          </Link>
+
+
+          <Link href="/rental" className="bg-transparent border-2 border-[#00c7ff] px-8 py-4 rounded-xl text-[#00c7ff] font-semibold text-lg cursor-pointer flex items-center gap-2.5 transition-all duration-300 hover:bg-neon-blue/10 justify-center no-underline">
+            Explore Strategy Gene Pool <i className="fas fa-arrow-right"></i>
+          </Link>
+
         </div>
       </div>
 
