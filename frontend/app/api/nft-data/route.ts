@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createPublicClient, http } from "viem";
 import { bscTestnet } from "viem/chains";
-import { unstable_cache } from "next/cache";
 
 // 创建公共客户端连接到 BSC 测试网
 const publicClient = createPublicClient({
@@ -27,43 +26,6 @@ const CONTRACT_ABI = [
   },
 ] as const;
 
-// 缓存的 NFT 数据获取函数
-const getCachedNFTData = unstable_cache(
-  async (tokenId: string, contractAddress: string) => {
-    try {
-      // 调用合约获取 tokenURI
-      const tokenURI = await publicClient.readContract({
-        address: contractAddress as `0x${string}`,
-        abi: CONTRACT_ABI,
-        functionName: "tokenURI",
-        args: [BigInt(tokenId)],
-      });
-
-      // 调用合约获取 owner
-      const owner = await publicClient.readContract({
-        address: contractAddress as `0x${string}`,
-        abi: CONTRACT_ABI,
-        functionName: "ownerOf",
-        args: [BigInt(tokenId)],
-      });
-
-      return {
-        tokenURI,
-        owner,
-        tokenId,
-      };
-    } catch (error) {
-      console.error(`Error fetching NFT data for token ${tokenId}:`, error);
-      throw error;
-    }
-  },
-  ["nft-data"], // cache key
-  {
-    revalidate: 300, // 5 minutes cache
-    tags: ["nft-data"],
-  }
-);
-
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -77,13 +39,26 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // 使用缓存的函数获取数据
-    const result = await getCachedNFTData(tokenId, contractAddress);
+    // 调用合约获取 tokenURI
+    const tokenURI = await publicClient.readContract({
+      address: contractAddress as `0x${string}`,
+      abi: CONTRACT_ABI,
+      functionName: "tokenURI",
+      args: [BigInt(tokenId)],
+    });
 
-    return NextResponse.json(result, {
-      headers: {
-        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
-      },
+    // 调用合约获取 owner
+    const owner = await publicClient.readContract({
+      address: contractAddress as `0x${string}`,
+      abi: CONTRACT_ABI,
+      functionName: "ownerOf",
+      args: [BigInt(tokenId)],
+    });
+
+    return NextResponse.json({
+      tokenURI,
+      owner,
+      tokenId,
     });
   } catch (error) {
     console.error("Error fetching NFT data:", error);
