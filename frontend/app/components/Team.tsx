@@ -15,9 +15,9 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Alex R. Vance',
-    role: '首席协议架构师',
-    bio: '前Chainlink Labs首席研究员，去中心化机器学习专家。在MIT Media Lab期间主攻基于区块链的AI系统。',
+    name: 'Top',
+    role: 'Founder/Smart Contract Manager',
+    bio: 'Senior developer, participated in the development of multiple Defi and GameFi projects, focusing on blockchain-based AI systems.',
     icon: 'fas fa-brain',
     socialLinks: {
       twitter: '#',
@@ -25,9 +25,9 @@ const teamMembers: TeamMember[] = [
     }
   },
   {
-    name: 'Jamie K. Sato',
-    role: '进化算法负责人',
-    bio: '前OpenAI研究员，专注于强化学习在金融交易中的应用。拥有斯坦福计算金融博士学位。',
+    name: 'Dylan',
+    role: 'Algorithm/backend manager',
+    bio: 'AI researcher, focusing on the application of reinforcement learning in financial transactions. Developed and deployed various types of agents',
     icon: 'fas fa-dna',
     socialLinks: {
       twitter: '#',
@@ -35,19 +35,9 @@ const teamMembers: TeamMember[] = [
     }
   },
   {
-    name: 'Morgan Lee',
-    role: '智能合约负责人',
-    bio: '前Compound核心开发者，ERC-6551标准共同作者。参与开发多个DeFi核心协议。',
-    icon: 'fas fa-code',
-    socialLinks: {
-      twitter: '#',
-      github: '#'
-    }
-  },
-  {
-    name: 'Taylor Reed',
-    role: '策略研究总监',
-    bio: '量化基金前首席策略官，拥有15年算法交易经验。专注于高维市场行为建模。',
+    name: 'PUXINYU',
+    role: 'Front-end dev manager',
+    bio: 'Front-end expert, focusing on front-end development, with in-depth research on frameworks such as React and Vue',
     icon: 'fas fa-chart-line',
     socialLinks: {
       twitter: '#'
@@ -60,7 +50,7 @@ const Team = () => {
     <section className="py-16 px-[5%]" style={{ backgroundColor: 'rgba(0, 15, 34, 0.6)' }}>
       <div className="text-center max-w-4xl mx-auto mb-12">
         <h2 className="text-4xl mb-6 bg-gradient-to-r from-neon-green to-neon-blue bg-clip-text text-transparent">
-          我们的基因工程团队
+          Our Team
         </h2>
       </div>
 

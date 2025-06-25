@@ -10,7 +10,8 @@ interface FooterSection {
   }[];
 }
 
-const footerSections: FooterSection[] = [
+const footerSections:FooterSection[] = [];
+const footerSections1: FooterSection[] = [
   {
     title: '协议',
     links: [
