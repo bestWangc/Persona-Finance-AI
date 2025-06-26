@@ -17,7 +17,6 @@ In the future, we will use Chainlink's CCIP to implement more cross chain strate
 PFAI achieves breakthrough innovation through three core modular architectures:
 #### 1. Dynamic Persona Minting
 - Transforms user risk profiles → Generates initial Persona NFTs
-- ERC-6551 standard ensures composability with DeFi/GameFi ecosystems
 
 #### 2. Behavioral Evolution Engine
 - On-chain transactions → Real-time strategy DNA upgrades

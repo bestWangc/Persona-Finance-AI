@@ -23,10 +23,10 @@ ChartJS.register(
 
 const RiskRadarChart = () => {
   const data = {
-    labels: ['风险承受', '收益预期', '交易频率', '市场敏感度', '技术分析', '基本面分析'],
+    labels: ['Risk', 'Earn', 'Trading frequency', 'Latency', 'TA Signals', 'Hotspot Analysis'],
     datasets: [
       {
-        label: '当前人格',
+        label: 'Current',
         data: [85, 70, 60, 90, 75, 45],
         backgroundColor: 'rgba(189, 0, 255, 0.2)',
         borderColor: '#bd00ff',
@@ -37,7 +37,7 @@ const RiskRadarChart = () => {
         pointHoverBorderColor: '#bd00ff'
       },
       {
-        label: '进化目标',
+        label: 'Evolution Target',
         data: [75, 85, 80, 85, 90, 70],
         backgroundColor: 'rgba(0, 255, 157, 0.2)',
         borderColor: '#00ff9d',

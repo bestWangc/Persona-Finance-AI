@@ -42,7 +42,7 @@ const Hero = () => {
             DNA: [0x3A...BEF2]
           </div>
           <div className="bg-gradient-to-r from-[#00ff9d] to-[#008a5e]  px-6 py-2 rounded-[30px] text-text-light font-semibold font-mono text-white">
-            +37% APY
+            +12% APY
           </div>
         </div>
       </div>

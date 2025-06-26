@@ -339,8 +339,8 @@ const NFTCard = ({
         <div>
           <h4 className="text-sm text-text-gray mb-3">Trading Personality</h4>
           <div className="grid grid-cols-1 gap-3">
-            <InfoTag label="Risk Profile" value={nft.personality.riskProfile} />
-            <InfoTag label="Frequency" value={nft.personality.tradingFrequency} />
+            {/* <InfoTag label="Risk Profile" value={nft.personality.riskProfile} /> */}
+            {/* <InfoTag label="Frequency" value={nft.personality.tradingFrequency} /> */}
             <InfoTag label="Win Rate" value={`${nft.personality.winRate}%`} />
           </div>
         </div>
