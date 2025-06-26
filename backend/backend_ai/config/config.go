@@ -1,11 +1,9 @@
 package config
 
 import (
-	"bytes"
-	"errors"
 	"flag"
 	"os"
-	"strings"
+	"sync/atomic"
 
 	"github.com/goccy/go-yaml"
 )
@@ -15,25 +13,29 @@ var (
 	configFile = flag.String("config", "", "specify configuration file path")
 )
 
-type ConfigT struct {
-	NodeUrl                   string      `yaml:"node_url"`
-	ChainId                   uint8       `yaml:"chain_id"`
-	IndexerEndpoint           string      `yaml:"indexer_endpoint"`
-	IndexerFromVersionDefault uint64      `yaml:"indexer_from_version_default"`
-	DatabaseUrl               string      `yaml:"database_url"`
-	Redis                     RedisConfig `yaml:"redis"`
-	DexAccount                string      `yaml:"dex_account"`
-	UsdcAssetType             string      `yaml:"usdc_asset_type"`
-	ApiServeAddress           string      `yaml:"api_serve_address"`
-	ApiServeReleaseMode       bool        `yaml:"api_serve_release_mode"`
-	ApiDisableConsoleColor    bool        `yaml:"api_disable_console_color"`
-	ServeSwaggerUI            bool        `yaml:"serve_swagger_ui"`
-}
-
 type RedisConfig struct {
 	Addr     string `yaml:"addr"`
 	Password string `yaml:"password"`
 	Db       int    `yaml:"db"`
+}
+
+func RoundRPC() func() string {
+	var n uint64
+	return func() string {
+		tn := atomic.LoadUint64(&n)
+		atomic.AddUint64(&n, 1)
+		return Config.RPCS[int(tn)%len(Config.RPCS)]
+	}
+}
+
+type ConfigT struct {
+	ChainId           uint8       `yaml:"chain_id"`
+	DatabaseUrl       string      `yaml:"database_url"`
+	RPCS              []string    `yaml:"rpcs"`
+	NftAddress        string      `yaml:"nft_address"`
+	ApiServeAddress   string      `yaml:"api_serve_address"`
+	Redis             RedisConfig `yaml:"redis"`
+	LatestblockPeriod uint64      `yaml:"latestblockPeriod"`
 }
 
 func LoadConfig() error {
@@ -45,14 +47,5 @@ func LoadConfig() error {
 	if err = yaml.Unmarshal(content, Config); err != nil {
 		return err
 	}
-
-	return validate()
-}
-
-func validate() error {
-	if len(bytes.NewBufferString(Config.DexAccount).Bytes()) > 66 {
-		return errors.New("config: 'dex_account' invalid")
-	}
-	Config.DexAccount = strings.ToLower(Config.DexAccount)
 	return nil
 }

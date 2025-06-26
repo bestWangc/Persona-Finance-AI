@@ -3,8 +3,6 @@ package main
 import (
 	"net/http"
 
-	"github.com/bestWangc/Persona-Finance-AI/backend/backend_ai/config"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,9 +14,6 @@ func health(c *gin.Context) {
 }
 
 func setupRouter() *gin.Engine {
-	if config.Config.ApiDisableConsoleColor {
-		gin.DisableConsoleColor()
-	}
 
 	r := gin.Default()
 

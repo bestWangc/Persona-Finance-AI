@@ -1,0 +1,18 @@
+chain_id: 250
+
+
+redis:
+  addr: 127.0.0.1
+  password: "test"
+  db: 0
+
+# PostgreSQL database URL
+database_url: postgresql://127.0.0.1:5432/max_backend?sslmode=disable
+
+rpcs: 
+- [
+  https://bsc.w3node.com/ce8908f24eb76740bef8654a3c2283941ca0ff4a25f6017ee6abf401c6cc70e2/api,
+  https://bsc.w3node.com/ce8908f24eb76740bef8654a3c2283941ca0ff4a25f6017ee6abf401c6cc70e2/api,
+  ]
+nft_address : "0x792B4499024284eDbB1448eabC7B39a0C0010894"
+api_serve_address: ":8000"
