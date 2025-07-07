@@ -28,3 +28,7 @@ PFAI achieves breakthrough innovation through three core modular architectures:
 - **Influence Tokenization**: Governance rights + revenue sharing
 
 ![alt text](image-1.png)
+
+this is our result:
+
+![alt text](result.png)
